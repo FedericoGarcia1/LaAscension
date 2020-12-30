@@ -571,6 +571,25 @@
           "lib/net45/Microsoft.Graph.dll": {}
         }
       },
+      "Microsoft.Graph.Core/1.22.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "6.0.1",
+          "System.Diagnostics.DiagnosticSource": "4.6.0",
+          "System.ValueTuple": "4.3.0"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Net.Http"
+        ],
+        "compile": {
+          "lib/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Graph.Core.dll": {}
+        }
+      },
       "Microsoft.Identity.Client/4.14.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -685,6 +704,16 @@
           "lib/net45/NPOI.dll": {}
         }
       },
+      "Roboyo.Mail.Activities.SaveAttachment/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/_._": {}
+        },
+        "runtime": {
+          "lib/Roboyo.Mail.SaveAttachment.Design.dll": {},
+          "lib/Roboyo.Mail.SaveAttachment.dll": {}
+        }
+      },
       "SharpZipLib/1.2.0": {
         "type": "package",
         "compile": {
@@ -726,6 +755,22 @@
         },
         "runtime": {
           "lib/net461/System.ComponentModel.Annotations.dll": {}
+        }
+      },
+      "System.Diagnostics.DiagnosticSource/4.6.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.3"
+        },
+        "frameworkAssemblies": [
+          "System",
+          "mscorlib"
+        ],
+        "compile": {
+          "lib/net46/_._": {}
+        },
+        "runtime": {
+          "lib/net46/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
       "System.IO.Abstractions/3.0.10": {
@@ -918,7 +963,7 @@
           "lib/net461/System.ValueTuple.dll": {}
         }
       },
-      "UiPath/20.10.7585.27318": {
+      "UiPath/20.10.7641.24102": {
         "type": "package",
         "compile": {
           "lib/_._": {}
@@ -1380,7 +1425,7 @@
           }
         }
       },
-      "UiPath.OCR.Activities/2.4.0": {
+      "UiPath.OCR.Activities/2.4.1": {
         "type": "package",
         "dependencies": {
           "AForge.Imaging": "2.2.5",
@@ -1607,7 +1652,7 @@
           "lib/net461/TelemetryClient.dll": {}
         }
       },
-      "UiPath.UIAutomation.Activities/20.10.5": {
+      "UiPath.UIAutomation.Activities/20.10.8": {
         "type": "package",
         "dependencies": {
           "AvalonEdit": "5.0.3",
@@ -1615,8 +1660,8 @@
           "Humanizer.Core": "2.4.2",
           "Newtonsoft.Json": "11.0.2",
           "System.IO.Abstractions": "3.0.10",
-          "UiPath": "[20.10.7585.27318]",
-          "UiPath.OCR.Activities": "2.4.0",
+          "UiPath": "[20.10.7641.24102]",
+          "UiPath.OCR.Activities": "2.4.1",
           "UiPath.OCR.Contracts": "2.7.1",
           "UiPath.Platform": "20.10.4",
           "UiPath.Telemetry.Client": "1.2.20",
@@ -2677,6 +2722,28 @@
         "microsoft.graph.nuspec"
       ]
     },
+    "Microsoft.Graph.Core/1.22.0": {
+      "sha512": "pN2ZB/7YpmWXTMlc0Z6ZO657/NlAMfYWw3T6wQF4zW1Adz8cCTP+KlAkZPutlBqSEmjfGr0syH2IxxF3omv/Bw==",
+      "type": "package",
+      "path": "microsoft.graph.core/1.22.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/monoandroid70/Microsoft.Graph.Core.dll",
+        "lib/monoandroid70/Microsoft.Graph.Core.xml",
+        "lib/net45/Microsoft.Graph.Core.dll",
+        "lib/net45/Microsoft.Graph.Core.xml",
+        "lib/netstandard1.1/Microsoft.Graph.Core.dll",
+        "lib/netstandard1.1/Microsoft.Graph.Core.xml",
+        "lib/xamarinios10/Microsoft.Graph.Core.dll",
+        "lib/xamarinios10/Microsoft.Graph.Core.xml",
+        "lib/xamarinmac20/Microsoft.Graph.Core.dll",
+        "lib/xamarinmac20/Microsoft.Graph.Core.xml",
+        "microsoft.graph.core.1.22.0.nupkg.sha512",
+        "microsoft.graph.core.nuspec"
+      ]
+    },
     "Microsoft.Identity.Client/4.14.0": {
       "sha512": "Etqux6Zuuv1yEN4UwKbAn6EZv0Rooc+vM4N9z7gxmeT7dyoKlXIRN44DQPzD9LV1CW0KsTVqH+2B42p1NKqPlQ==",
       "type": "package",
@@ -2874,6 +2941,18 @@
         "npoi.nuspec"
       ]
     },
+    "Roboyo.Mail.Activities.SaveAttachment/1.0.0": {
+      "sha512": "Cb1DDqUqry7DjEbYP2tYin4ePLAYWCAjXCdWmW70u2IPyOpnddUR3+l0ajfWnCBtKsPuD4ow+sawQyHonxDXqA==",
+      "type": "package",
+      "path": "roboyo.mail.activities.saveattachment/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        "lib/Roboyo.Mail.SaveAttachment.Design.dll",
+        "lib/Roboyo.Mail.SaveAttachment.dll",
+        "roboyo.mail.activities.saveattachment.1.0.0.nupkg.sha512",
+        "roboyo.mail.activities.saveattachment.nuspec"
+      ]
+    },
     "SharpZipLib/1.2.0": {
       "sha512": "zvWa/L02JHNatdtjya6Swpudb2YEHaOLHL1eRrqpjm71iGRNUNONO5adUF/9CHbSJbzhELW1UoH4NGy7n7+3bQ==",
       "type": "package",
@@ -3030,6 +3109,31 @@
         "ref/xamarinwatchos10/_._",
         "system.componentmodel.annotations.4.7.0.nupkg.sha512",
         "system.componentmodel.annotations.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Diagnostics.DiagnosticSource/4.6.0": {
+      "sha512": "mbBgoR0rRfl2uimsZ2avZY8g7Xnh1Mza0rJZLPcxqiMWlkGukjmRkuMJ/er+AhQuiRIh80CR/Hpeztr80seV5g==",
+      "type": "package",
+      "path": "system.diagnostics.diagnosticsource/4.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net45/System.Diagnostics.DiagnosticSource.dll",
+        "lib/net45/System.Diagnostics.DiagnosticSource.xml",
+        "lib/net46/System.Diagnostics.DiagnosticSource.dll",
+        "lib/net46/System.Diagnostics.DiagnosticSource.xml",
+        "lib/netstandard1.1/System.Diagnostics.DiagnosticSource.dll",
+        "lib/netstandard1.1/System.Diagnostics.DiagnosticSource.xml",
+        "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll",
+        "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.xml",
+        "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.dll",
+        "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.xml",
+        "system.diagnostics.diagnosticsource.4.6.0.nupkg.sha512",
+        "system.diagnostics.diagnosticsource.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
@@ -3402,10 +3506,10 @@
         "version.txt"
       ]
     },
-    "UiPath/20.10.7585.27318": {
-      "sha512": "JsTRlWDWgidI40/uzjexv8R+IA6fg+GHEoIT2/yUTN+0IPeypRqBhOnL2vYBKOIO7r7IdL7FFFda/1A13KeU+Q==",
+    "UiPath/20.10.7641.24102": {
+      "sha512": "xYcQCw9/VQY9Y4wY/LWR9WEeNR3s+j5D1P4n04MiTajGfe/x0d4s5dVEJT0K2roCNKafSp+jzh6sK2vTyM/eNg==",
       "type": "package",
-      "path": "uipath/20.10.7585.27318",
+      "path": "uipath/20.10.7641.24102",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3456,7 +3560,7 @@
         "build/UiPath/libcurl_x86.dll",
         "build/UiPath/slinject.exe",
         "lib/UiPath.Interop.dll",
-        "uipath.20.10.7585.27318.nupkg.sha512",
+        "uipath.20.10.7641.24102.nupkg.sha512",
         "uipath.nuspec"
       ]
     },
@@ -3645,10 +3749,10 @@
         "uipath.microsoftoffice365.activities.nuspec"
       ]
     },
-    "UiPath.OCR.Activities/2.4.0": {
-      "sha512": "x2nnBjsYQGMYllrdtKXqoLDjgU3JBPX3CPA50fXhpG290T+nrZwzRZKpgcAdbpnERnGW0vtm0c8EHmZ4C0uwLw==",
+    "UiPath.OCR.Activities/2.4.1": {
+      "sha512": "piXylYbajeNVUTAZQxv00z4990l27A9EtE0KCjBhB4kio7rXZI/EkpPCmpcxR8MwHoOo2PLBTDo0U+3ky9JtuQ==",
       "type": "package",
-      "path": "uipath.ocr.activities/2.4.0",
+      "path": "uipath.ocr.activities/2.4.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3696,7 +3800,7 @@
         "lib/net461/tr/UiPath.OCR.Activities.resources.dll",
         "lib/net461/zh-CN/UiPath.OCR.Activities.Design.resources.dll",
         "lib/net461/zh-CN/UiPath.OCR.Activities.resources.dll",
-        "uipath.ocr.activities.2.4.0.nupkg.sha512",
+        "uipath.ocr.activities.2.4.1.nupkg.sha512",
         "uipath.ocr.activities.nuspec"
       ]
     },
@@ -3785,10 +3889,10 @@
         "uipath.telemetry.client.nuspec"
       ]
     },
-    "UiPath.UIAutomation.Activities/20.10.5": {
-      "sha512": "eD33RUH3dQBBrZ2UyBPpoWWwF9EGua2sSdMCEt0QQOpBAB8iJB0/0R+oAYdoHxgkQgU6fsJ17ROWrg7tjL4r8w==",
+    "UiPath.UIAutomation.Activities/20.10.8": {
+      "sha512": "hHSNEZrikiFIzhKqn3ynDDCTFziWXdvCng0CJ93YfOhitca901NPRmdGzYqhsRsS71IaOORQ0VJdg6NiZftQqQ==",
       "type": "package",
-      "path": "uipath.uiautomation.activities/20.10.5",
+      "path": "uipath.uiautomation.activities/20.10.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3979,7 +4083,7 @@
         "lib/net461/zh-cn/UiPath.UIAutomationNext.resources.dll",
         "lib/net461/zh-cn/UiPath.UiAutomation.Activities.resources.dll",
         "lib/net461/zh-cn/UiPath.Wizards.resources.dll",
-        "uipath.uiautomation.activities.20.10.5.nupkg.sha512",
+        "uipath.uiautomation.activities.20.10.8.nupkg.sha512",
         "uipath.uiautomation.activities.nuspec"
       ]
     },
@@ -4056,13 +4160,14 @@
     ".NETFramework,Version=v4.6.1": [
       "Logs.Activities >= 1.0.1 <= 1.0.1",
       "Microsoft.Exchange.WebServices >= 2.2.0 <= 2.2.0",
+      "Roboyo.Mail.Activities.SaveAttachment >= 1.0.0 <= 1.0.0",
       "UiPath.Credentials.Activities >= 1.1.6479.13204 <= 1.1.6479.13204",
       "UiPath.Excel.Activities >= 2.9.2-preview <= 2.9.2-preview",
       "UiPath.ExchangeServer.Activities >= 1.0.7 <= 1.0.7",
       "UiPath.Mail.Activities >= 1.9.3 <= 1.9.3",
       "UiPath.MicrosoftOffice365.Activities >= 1.4.0 <= 1.4.0",
       "UiPath.System.Activities >= 20.10.1 <= 20.10.1",
-      "UiPath.UIAutomation.Activities >= 20.10.5 <= 20.10.5"
+      "UiPath.UIAutomation.Activities >= 20.10.8 <= 20.10.8"
     ]
   },
   "packageFolders": {
@@ -4088,6 +4193,11 @@
             "include": "Runtime",
             "target": "Package",
             "version": "[2.2.0, 2.2.0]"
+          },
+          "Roboyo.Mail.Activities.SaveAttachment": {
+            "include": "Runtime",
+            "target": "Package",
+            "version": "[1.0.0, 1.0.0]"
           },
           "UiPath.Credentials.Activities": {
             "include": "Runtime",
@@ -4122,7 +4232,7 @@
           "UiPath.UIAutomation.Activities": {
             "include": "Runtime",
             "target": "Package",
-            "version": "[20.10.5, 20.10.5]"
+            "version": "[20.10.8, 20.10.8]"
           }
         }
       }
@@ -4130,11 +4240,35 @@
   },
   "logs": [
     {
+      "code": "NU3034",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.Graph.Core 1.22.0' from source 'https://www.myget.org/F/workflow/': This package is signed but not by a trusted signer.",
+      "libraryId": "Microsoft.Graph.Core"
+    },
+    {
+      "code": "NU3034",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Diagnostics.DiagnosticSource 4.6.0' from source 'https://www.myget.org/F/workflow/': This package is signed but not by a trusted signer.",
+      "libraryId": "System.Diagnostics.DiagnosticSource"
+    },
+    {
       "code": "NU1603",
       "level": "Warning",
       "warningLevel": 1,
       "message": "UiPath.MicrosoftOffice365.Activities 1.4.0 depends on BouncyCastle (>= 1.8.2) but BouncyCastle 1.8.2 was not found. An approximate best match of BouncyCastle 1.8.5 was resolved.",
       "libraryId": "BouncyCastle",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.6.1"
+      ]
+    },
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "UiPath.MicrosoftOffice365.Activities 1.4.0 depends on Microsoft.Graph.Core (>= 1.19.0) but Microsoft.Graph.Core 1.19.0 was not found. An approximate best match of Microsoft.Graph.Core 1.22.0 was resolved.",
+      "libraryId": "Microsoft.Graph.Core",
       "targetGraphs": [
         ".NETFramework,Version=v4.6.1"
       ]
@@ -4160,10 +4294,11 @@
       ]
     },
     {
-      "code": "NU1102",
-      "level": "Error",
-      "message": "Unable to find package Microsoft.Graph.Core with version (>= 1.19.0)\r\n  - Found 1 version(s) in https://www.myget.org/F/workflow/ [ Nearest version: 1.18.0 ]\r\n  - Found 1 version(s) in Official [ Nearest version: 1.18.0 ]\r\n  - Found 0 version(s) in C:\\Users\\RPA_Ascension\\AppData\\Local\\UiPath\\app-20.10.2\\.\\Packages\r\n  - Found 0 version(s) in Local\r\n  - Found 0 version(s) in https://gallery.uipath.com/api/v2\r\n  - Found 0 version(s) in Connect",
-      "libraryId": "Microsoft.Graph.Core",
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "System.Diagnostics.DiagnosticSource 4.6.0 depends on System.Memory (>= 4.5.3) but System.Memory 4.5.3 was not found. An approximate best match of System.Memory 4.5.4 was resolved.",
+      "libraryId": "System.Memory",
       "targetGraphs": [
         ".NETFramework,Version=v4.6.1"
       ]

@@ -5,13 +5,14 @@
   "dependencies": {
     "Logs.Activities": "[1.0.1]",
     "Microsoft.Exchange.WebServices": "[2.2.0]",
+    "Roboyo.Mail.Activities.SaveAttachment": "[1.0.0]",
     "UiPath.Credentials.Activities": "[1.1.6479.13204]",
     "UiPath.Excel.Activities": "[2.9.2-preview]",
     "UiPath.ExchangeServer.Activities": "[1.0.7]",
     "UiPath.Mail.Activities": "[1.9.3]",
     "UiPath.MicrosoftOffice365.Activities": "[1.4.0]",
     "UiPath.System.Activities": "[20.10.1]",
-    "UiPath.UIAutomation.Activities": "[20.10.5]"
+    "UiPath.UIAutomation.Activities": "[20.10.8]"
   },
   "webServices": [],
   "entitiesStores": [],

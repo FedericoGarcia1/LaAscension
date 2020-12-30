@@ -1,13 +1,14 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CabeceraBeneficiarios" this:CabeceraBeneficiarios.in_rutaConsolidada="C:\Users\OAVILAC\Downloads\Consultas\Consolidado AP.xlsm" this:CabeceraBeneficiarios.In_RutafolderCabeceraBeneficiarios="C:\Users\OAVILAC\Downloads\Consultas" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CabeceraBeneficiarios" this:CabeceraBeneficiarios.in_rutaConsolidada="C:\Users\RPA_Ascension\Documents\Proyectos\Acension\Formatos\Base consolidado.xlsm" this:CabeceraBeneficiarios.In_RutafolderCabeceraBeneficiarios="C:\Users\RPA_Ascension\Documents\Proyectos\Acension\Formatos" this:CabeceraBeneficiarios.in_FechaArchivo="20201209" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_rutaConsolidada" Type="InArgument(x:String)" />
     <x:Property Name="In_RutafolderCabeceraBeneficiarios" Type="InArgument(x:String)" />
     <x:Property Name="ou_RutaFileCabeceraBeneficiarios" Type="OutArgument(x:String)" />
+    <x:Property Name="in_FechaArchivo" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>834,519</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>784,7152</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CabeceraBeneficiarios_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -76,13 +77,13 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CabeceraBeneficiarios" sap:VirtualizedContainerService.HintSize="376,420" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CabeceraBeneficiarios" sap:VirtualizedContainerService.HintSize="740,7087" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[LogLevel.Info]" Message="[&quot;-------[Flujos_CabeceraBeneficiarios] - Inicio...&quot;]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="698,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[LogLevel.Info]" Message="[&quot;-------[Flujos_CabeceraBeneficiarios] - Inicio...&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -90,7 +91,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <Sequence DisplayName="Modulo 33- 34" sap:VirtualizedContainerService.HintSize="334,66" sap2010:WorkflowViewState.IdRef="Sequence_50">
+    <Sequence DisplayName="Modulo 33- 34" sap:VirtualizedContainerService.HintSize="698,6733" sap2010:WorkflowViewState.IdRef="Sequence_50">
       <Sequence.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="DataTable" />
         <Variable x:TypeArguments="x:Int32" Default="1" Name="IntContador" />
@@ -113,11 +114,11 @@
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Ámbito de aplicación de Excel" sap:VirtualizedContainerService.HintSize="656,51" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" Workbook="[vbLibro]" WorkbookPath="[in_rutaConsolidada]">
+      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Ámbito de aplicación de Excel" sap:VirtualizedContainerService.HintSize="656,175" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" Visible="False" Workbook="[vbLibro]" WorkbookPath="[in_rutaConsolidada]">
         <ui:ExcelApplicationScope.Body>
           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
             <ActivityAction.Argument>
@@ -162,7 +163,7 @@
         </ui:ExcelApplicationScope.Body>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -175,13 +176,13 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:ExcelCloseWorkbook>
-      <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[DataTable]" DisplayName="Para cada fila" sap:VirtualizedContainerService.HintSize="656,51" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[DataTable]" DisplayName="Para cada fila" sap:VirtualizedContainerService.HintSize="656,4842" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
         <ui:ForEachRow.Body>
           <ActivityAction x:TypeArguments="sd:DataRow">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Cuerpo" sap:VirtualizedContainerService.HintSize="476,466" sap2010:WorkflowViewState.IdRef="Sequence_38">
+            <Sequence DisplayName="Cuerpo" sap:VirtualizedContainerService.HintSize="494,4694" sap2010:WorkflowViewState.IdRef="Sequence_38">
               <Sequence.Variables>
                 <Variable x:TypeArguments="ui:WorkbookApplication" Name="vbLibro1" />
               </Sequence.Variables>
@@ -190,16 +191,16 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Ámbito de aplicación de Excel" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" Workbook="[vbLibro1]" WorkbookPath="[In_RutafolderCabeceraBeneficiarios+&quot;\Cabecera Beneficiarios.xlsx&quot;]">
+              <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Ámbito de aplicación de Excel" sap:VirtualizedContainerService.HintSize="452,4403" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" Workbook="[vbLibro1]" WorkbookPath="[In_RutafolderCabeceraBeneficiarios+&quot;\Cabecera Beneficiarios.xlsx&quot;]">
                 <ui:ExcelApplicationScope.Body>
                   <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                    <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="418,4294" sap2010:WorkflowViewState.IdRef="Sequence_37">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
@@ -294,7 +295,7 @@
                             <OutArgument x:TypeArguments="s:DateTime">[DtmFechaIngreso]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
-                            <InArgument x:TypeArguments="s:DateTime">[Convert.ToDateTime(row("Fecha creacion").ToString)]</InArgument>
+                            <InArgument x:TypeArguments="s:DateTime">[Convert.ToDateTime(in_FechaArchivo)]</InArgument>
                           </Assign.Value>
                         </Assign>
                         <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_2">
@@ -427,8 +428,8 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:ExcelApplicationScope>
-              <ui:ExcelCloseWorkbook DisplayName="Cerrar libro" sap:VirtualizedContainerService.HintSize="434,59" sap2010:WorkflowViewState.IdRef="ExcelCloseWorkbook_1" Workbook="[vbLibro1]" />
-              <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+              <ui:ExcelCloseWorkbook DisplayName="Cerrar libro" sap:VirtualizedContainerService.HintSize="452,59" sap2010:WorkflowViewState.IdRef="ExcelCloseWorkbook_1" Workbook="[vbLibro1]" />
+              <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="452,60" sap2010:WorkflowViewState.IdRef="Assign_8">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:Int32">[Intcontador]</OutArgument>
                 </Assign.To>
@@ -441,7 +442,7 @@
         </ui:ForEachRow.Body>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -757,7 +758,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:CommentOut>
     </Sequence>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;-------[Flujos_CabeceraBeneficiarios] - Termina...&quot;]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="698,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;-------[Flujos_CabeceraBeneficiarios] - Termina...&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>

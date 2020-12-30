@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>810,3340</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>854,2952</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -51,7 +51,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="33">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -83,10 +83,11 @@
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="526,3115" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="421,2767" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="vDtbInforme" />
       <Variable x:TypeArguments="x:Boolean" Name="vBooInformacionCorrecta" />
@@ -94,6 +95,12 @@
       <Variable x:TypeArguments="x:String" Name="VRutaArchivoValidacion" />
       <Variable x:TypeArguments="x:String" Name="vAlfRutaArchivoAdjunto" />
       <Variable x:TypeArguments="x:String" Name="vFechaArchivo" />
+      <Variable x:TypeArguments="x:String" Name="vFechaCabeceraBeneficiarios" />
+      <Variable x:TypeArguments="sd:DataTable" Name="vDtbDataFinalValidada" />
+      <Variable x:TypeArguments="x:String" Name="vValoresCorrectos" />
+      <Variable x:TypeArguments="x:String" Name="vRutaFilesSAP" />
+      <Variable x:TypeArguments="x:String" Name="RutaArchivoCabContratos" />
+      <Variable x:TypeArguments="x:String" Name="vPathFileAP" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -101,7 +108,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;-------[Process] - Iniciando actualizacion de transaccion...&quot;]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="378,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;-------[Process] - Iniciando actualizacion de transaccion...&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -109,7 +116,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ActualizarTransactionData workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\ActualizarTransactionData.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ActualizarTransactionData workflow" sap:VirtualizedContainerService.HintSize="378,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\ActualizarTransactionData.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InOutArgument x:TypeArguments="sd:DataRow" x:Key="io_DtrTransactionItem">[io_DtrTransactionItem]</InOutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_AlfArchivoTrazabilidad">[in_AlfArchivoTrazabilidad]</InArgument>
@@ -118,7 +125,7 @@
         <OutArgument x:TypeArguments="x:Boolean" x:Key="out_BooReintenter">[out_BooReintenter]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;-------[Process] - Finalizo actualizacion de transaccion...&quot;]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="378,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;-------[Process] - Finalizo actualizacion de transaccion...&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -126,7 +133,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <Sequence DisplayName="Valifar log de auditoria" sap:VirtualizedContainerService.HintSize="484,66" sap2010:WorkflowViewState.IdRef="Sequence_32">
+    <Sequence DisplayName="Valifar log de auditoria" sap:VirtualizedContainerService.HintSize="378,66" sap2010:WorkflowViewState.IdRef="Sequence_32">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="vBooExitLog" />
       </Sequence.Variables>
@@ -189,14 +196,14 @@
         </If.Else>
       </If>
     </Sequence>
-    <Sequence DisplayName="Asignacion de variables" sap:VirtualizedContainerService.HintSize="484,1268" sap2010:WorkflowViewState.IdRef="Sequence_41">
+    <Sequence DisplayName="Asignacion de variables" sap:VirtualizedContainerService.HintSize="379,758" sap2010:WorkflowViewState.IdRef="Sequence_41">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign sap:VirtualizedContainerService.HintSize="376,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
           <OutArgument x:TypeArguments="x:Object">[io_DtrTransactionItem.Item("Fecha Inicio")]</OutArgument>
         </Assign.To>
@@ -204,7 +211,15 @@
           <InArgument x:TypeArguments="x:Object">[now.ToString]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="376,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_34">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[vRutaFilesSAP]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[Path.Combine( in_HmpConfig("RutaBaseDescargasSAP").ToString,DateTime.Now.Year.ToString(),DateTime.Now.Month.ToString(),DateTime.Now.Day.ToString())]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[vAlfRutaArchivoAdjunto]</OutArgument>
         </Assign.To>
@@ -212,7 +227,7 @@
           <InArgument x:TypeArguments="x:String">[io_DtrTransactionItem.Item("Ruta File").ToString]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="376,60" sap2010:WorkflowViewState.IdRef="Assign_29">
+      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_29">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[VRutaArchivoValidacion]</OutArgument>
         </Assign.To>
@@ -220,7 +235,7 @@
           <InArgument x:TypeArguments="x:String">[Path.GetDirectoryName(vAlfRutaArchivoAdjunto)]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="376,60" sap2010:WorkflowViewState.IdRef="Assign_32">
+      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_32">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[vFechaArchivo]</OutArgument>
         </Assign.To>
@@ -228,13 +243,21 @@
           <InArgument x:TypeArguments="x:String">[Path.GetFileName(vAlfRutaArchivoAdjunto).Replace(".xlsx","")]</InArgument>
         </Assign.Value>
       </Assign>
-      <Sequence DisplayName="Leer Plantilla Adjunta" sap:VirtualizedContainerService.HintSize="376,776" sap2010:WorkflowViewState.IdRef="Sequence_5">
+      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_33">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[vFechaCabeceraBeneficiarios]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[Split(vFechaArchivo,"T").First]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Sequence DisplayName="Leer Plantilla Adjunta" sap:VirtualizedContainerService.HintSize="262,66" sap2010:WorkflowViewState.IdRef="Sequence_5">
         <Sequence.Variables>
           <Variable x:TypeArguments="ui:WorkbookApplication" Name="libro" />
         </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -402,18 +425,18 @@
         </ui:AppendLine>
       </Sequence>
     </Sequence>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="CommentOut_10">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="379,51" sap2010:WorkflowViewState.IdRef="CommentOut_10">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="563,443" sap2010:WorkflowViewState.IdRef="Sequence_43">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="563,143" sap2010:WorkflowViewState.IdRef="Sequence_43">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[out_BooReintenter]" DisplayName="Descarga SAP" sap:VirtualizedContainerService.HintSize="521,351" sap2010:WorkflowViewState.IdRef="If_7">
+          <If Condition="[out_BooReintenter]" DisplayName="Descarga SAP" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_7">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -443,18 +466,18 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="CommentOut_11">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="379,51" sap2010:WorkflowViewState.IdRef="CommentOut_14">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="418,649" sap2010:WorkflowViewState.IdRef="Sequence_44">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="418,158" sap2010:WorkflowViewState.IdRef="Sequence_50">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Secuencia validar informacion" sap:VirtualizedContainerService.HintSize="376,557" sap2010:WorkflowViewState.IdRef="Sequence_24">
+          <Sequence DisplayName="Secuencia validar informacion 1" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_24">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -492,6 +515,8 @@
                 <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_HmpConfig">[in_HmpConfig]</InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="in_AlfRutaArchivoAdjunto">[vAlfRutaArchivoAdjunto]</InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="ou_RutaArchivoValidacion">[VRutaArchivoValidacion]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_IFValidacion">PrimerValidacion</InArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="Out_ValidacionCorrecta">[vValoresCorrectos]</OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -518,69 +543,218 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <Sequence DisplayName="Consolidado" sap:VirtualizedContainerService.HintSize="484,435" sap2010:WorkflowViewState.IdRef="Sequence_30">
-      <Sequence.Variables>
-        <Variable x:TypeArguments="x:String" Name="vRutaFilesSAP" />
-      </Sequence.Variables>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="336,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;-------[Process] - Información  Correcta...&quot;]">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </ui:LogMessage>
-      <Assign sap:VirtualizedContainerService.HintSize="336,60" sap2010:WorkflowViewState.IdRef="Assign_30">
-        <Assign.To>
-          <OutArgument x:TypeArguments="x:String">[vRutaFilesSAP]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="x:String">[Path.Combine( in_HmpConfig("RutaBaseDescargasSAP").ToString,DateTime.Now.Year.ToString(),DateTime.Now.Month.ToString(),DateTime.Now.Day.ToString())]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Levantamiento de informacion workflow" sap:VirtualizedContainerService.HintSize="336,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="EXCEL\Levantamiento de informacion.xaml">
-        <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DataFinal" />
-          <InArgument x:TypeArguments="x:String" x:Key="in_AlfRutaArchivoAdjunto">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="vAlfRutaArchivoAdjunto" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_RutaFilesSAP">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="vRutaFilesSAP" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_RutaArchivoValidacion">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="VRutaArchivoValidacion" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_FechaArchivo">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="vFechaArchivo" />
-          </InArgument>
-        </ui:InvokeWorkflowFile.Arguments>
-      </ui:InvokeWorkflowFile>
-    </Sequence>
-    <Sequence DisplayName="Creación de plantillas" sap:VirtualizedContainerService.HintSize="484,83" sap2010:WorkflowViewState.IdRef="Sequence_37">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </Sequence>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Cargue_DataTransfer workflow" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="SAP\Cargue_DataTransfer.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_HmpConfig">[in_HmpConfig]</InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="379,51" sap2010:WorkflowViewState.IdRef="CommentOut_15">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="420,527" sap2010:WorkflowViewState.IdRef="Sequence_51">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="Consolidado" sap:VirtualizedContainerService.HintSize="378,435" sap2010:WorkflowViewState.IdRef="Sequence_30">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="336,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;-------[Process] - Información  Correcta...&quot;]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:LogMessage>
+            <Assign sap:VirtualizedContainerService.HintSize="336,60" sap2010:WorkflowViewState.IdRef="Assign_30">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[vRutaFilesSAP]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[Path.Combine( in_HmpConfig("RutaBaseDescargasSAP").ToString,DateTime.Now.Year.ToString(),DateTime.Now.Month.ToString(),DateTime.Now.Day.ToString())]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Levantamiento de informacion workflow" sap:VirtualizedContainerService.HintSize="336,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="EXCEL\Levantamiento de informacion.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DataFinal" />
+                <InArgument x:TypeArguments="x:String" x:Key="in_AlfRutaArchivoAdjunto">[vAlfRutaArchivoAdjunto]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_RutaFilesSAP">[vRutaFilesSAP]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_RutaArchivoValidacion">[VRutaArchivoValidacion]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_FechaArchivo">[vFechaArchivo]</InArgument>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_HmpConfig">[in_HmpConfig]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DataFinalValidada">[vDtbDataFinalValidada]</OutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ValoresCorrectos">[vValoresCorrectos]</InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+          </Sequence>
+        </Sequence>
+      </ui:CommentOut.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-    </ui:InvokeWorkflowFile>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="379,51" sap2010:WorkflowViewState.IdRef="CommentOut_16">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="463,649" sap2010:WorkflowViewState.IdRef="Sequence_52">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="Secuencia validar informacion 2" sap:VirtualizedContainerService.HintSize="421,557" sap2010:WorkflowViewState.IdRef="Sequence_46">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="379,91" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;-------[Process] - Iniciando validacion de Informacion...&quot;]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:LogMessage>
+            <ui:AppendLine DisplayName="Log Auditoria" FileName="[vPathLog]" sap:VirtualizedContainerService.HintSize="379,51" sap2010:WorkflowViewState.IdRef="AppendLine_6" Text="[datetime.Now.ToString+&quot; &quot;+&quot; |  Informativo  |&quot;+&quot;Inicia validación en el tratamiento de datos&quot;]" UseDefaultEncoding="False">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:AppendLine>
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ValidateInformeContratantesBeneficiarios workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_27" UnSafe="False" WorkflowFileName="Flujos\ValidateInformeContratantesBeneficiarios.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_AlfRutaArchivoAdjunto">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="vAlfRutaArchivoAdjunto" />
+                </InArgument>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_HmpConfig">
+                  <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_HmpConfig" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_PathLog">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="vPathLog" />
+                </InArgument>
+                <OutArgument x:TypeArguments="x:Boolean" x:Key="ou_vBooInformacionCorecta" />
+                <InArgument x:TypeArguments="x:String" x:Key="in_RutaArchivoValidacion">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="VRutaArchivoValidacion" />
+                </InArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="Out_ValidacionCorrecta">
+                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="vValoresCorrectos" />
+                </OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="379,91" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;-------[Process] - Termina validación de Información...&quot;]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:LogMessage>
+          </Sequence>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <Sequence DisplayName="Cargue plantilla socios" sap:VirtualizedContainerService.HintSize="379,66" sap2010:WorkflowViewState.IdRef="Sequence_37">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Flujos_SocioNegocio workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="Flujos\Flujos_SocioNegocio.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_rutaConsolidada">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(VRutaArchivoValidacion,&quot;Base consolidado.xlsm&quot;)" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="In_RutaPlanillaSocioNegocio">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(in_HmpConfig(&quot;RutaSociosNegocios&quot;).ToString,&quot;Socio de negocios.xlsx&quot;)" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RutafileMunicipio">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(in_HmpConfig(&quot;RutaSociosNegocios&quot;).ToString,&quot;FOR COM 30.xlsx&quot;)" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RutafolderSociotxt">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(VRutaArchivoValidacion,&quot;Socio de negocios.txt&quot;)" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="ou_RutatxtsocioNegocio" />
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_HmpConfig">
+            <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_HmpConfig" />
+          </InArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Cargue_DataTransfer workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="SAP\Cargue_DataTransfer.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_HmpConfig">[in_HmpConfig]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RutaArchivoValidacion">[VRutaArchivoValidacion]</InArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:InvokeWorkflowFile>
+    </Sequence>
+    <Sequence DisplayName="Cargue Plantilla Cabecera contratos" sap:VirtualizedContainerService.HintSize="379,508" sap2010:WorkflowViewState.IdRef="Sequence_45">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Flujos_CabeceraContratos workflow" sap:VirtualizedContainerService.HintSize="337,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Flujos\Flujos_CabeceraContratos.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_rutaConsolidada">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(VRutaArchivoValidacion,&quot;Base consolidado.xlsm&quot;)" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_rutaCabeceraContratos">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_HmpConfig(&quot;RutaSociosNegocios&quot;).ToString" />
+          </InArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="ou_RutaFileCabeceraContratos">
+            <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="RutaArchivoCabContratos" />
+          </OutArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_FechaArchivo">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="vFechaCabeceraBeneficiarios" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RutaDestinoCabeceraContratos">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(VRutaArchivoValidacion,&quot;Cabecera Contratos.xlsx&quot;)" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RutaValidacionArchivo">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="VRutaArchivoValidacion" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RutaFilesSAP">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="vRutaFilesSAP" />
+          </InArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Cargue_Cabecera_Contratos_SAP workflow" sap:VirtualizedContainerService.HintSize="337,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="SAP\Cargue_Cabecera_Contratos_SAP.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_HmpConfig">[in_HmpConfig]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RutaFileCabeceraContratos">[RutaArchivoCabContratos]</InArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SAP_Desarga_BOT_AfiliacionesAP workflow" sap:VirtualizedContainerService.HintSize="337,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="SAP\SAP_Desarga_BOT_AfiliacionesAP.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_HmpConfig">
+            <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_HmpConfig" />
+          </InArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="out_PathFileAP">
+            <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="vPathFileAP" />
+          </OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+    </Sequence>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="379,51" sap2010:WorkflowViewState.IdRef="CommentOut_5">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="563,574" sap2010:WorkflowViewState.IdRef="Sequence_36">
           <sap:WorkflowViewStateService.ViewState>
@@ -634,7 +808,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comentar" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+    <ui:CommentOut DisplayName="Comentar" sap:VirtualizedContainerService.HintSize="379,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Actividades ignoradas" sap:VirtualizedContainerService.HintSize="242,234" sap2010:WorkflowViewState.IdRef="Sequence_25">
           <sap:WorkflowViewStateService.ViewState>
@@ -1277,6 +1451,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="484,55" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="379,55" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
   </Sequence>
 </Activity>
