@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>825,1071</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>881,1071</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Outlook_EnviarCorreo_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -78,7 +78,6 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Outlook_EnviarCorreo" sap:VirtualizedContainerService.HintSize="835,966" sap2010:WorkflowViewState.IdRef="Sequence_1">
