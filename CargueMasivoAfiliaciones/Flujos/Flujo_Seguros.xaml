@@ -2,11 +2,12 @@
   <x:Members>
     <x:Property Name="in_RutaValidacionArchivo" Type="InArgument(x:String)" />
     <x:Property Name="in_HmpConfig" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_ValoresCorrectos" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>881,1705</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>936,2947</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Flujo_Seguros_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="37">
@@ -50,7 +51,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="21">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -72,30 +73,48 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.Graph</AssemblyReference>
       <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Flujo_Seguros" sap:VirtualizedContainerService.HintSize="418,1640" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Flujo_Seguros" sap:VirtualizedContainerService.HintSize="655,2842" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="vDtbConsolidado" />
       <Variable x:TypeArguments="sd:DataTable" Name="vDataFinal" />
       <Variable x:TypeArguments="sd:DataTable" Name="vInfoCabeceraCSV" />
       <Variable x:TypeArguments="x:String" Name="StrSalidaExcel" />
+      <Variable x:TypeArguments="x:String" Name="vFechaResultado" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadRange AddHeaders="True" DataTable="[vDtbConsolidado]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="376,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="A1" SheetName="Base consolidado" WorkbookPath="[Path.Combine(in_RutaValidacionArchivo,&quot;Base consolidado.xlsm&quot;)]" />
-    <ui:CopyFile ContinueOnError="{x:Null}" Destination="[Path.Combine(in_RutaValidacionArchivo,&quot;Cabecera Seguros.xlsx&quot;)]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[Path.Combine(in_HmpConfig(&quot;RutaSociosNegocios&quot;).ToString,&quot;Cabecera Seguros.xlsx&quot;)]">
+    <ui:ReadRange AddHeaders="True" DataTable="[vDtbConsolidado]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="613,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="A1" SheetName="Base consolidado" WorkbookPath="[Path.Combine(in_RutaValidacionArchivo,&quot;Base consolidado.xlsm&quot;)]" />
+    <Assign sap:VirtualizedContainerService.HintSize="613,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign.To>
+        <OutArgument x:TypeArguments="sd:DataTable">[vDtbConsolidado]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="sd:DataTable">[vDtbConsolidado.Select("[No. De Documento] in ("+in_ValoresCorrectos+")").CopyToDataTable]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:CopyFile ContinueOnError="{x:Null}" Destination="[Path.Combine(in_RutaValidacionArchivo,&quot;Cabecera Seguros.xlsx&quot;)]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="613,157" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[Path.Combine(in_HmpConfig(&quot;RutaSociosNegocios&quot;).ToString,&quot;Cabecera Seguros.xlsx&quot;)]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CopyFile>
-    <Assign sap:VirtualizedContainerService.HintSize="376,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="613,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataTable">[vDtbConsolidado]</OutArgument>
       </Assign.To>
@@ -103,7 +122,7 @@
         <InArgument x:TypeArguments="sd:DataTable">[vDtbConsolidado.AsEnumerable.Where(Function(x)Not (String.IsNullOrEmpty(x("Numero contrato").ToString) Or String.IsNullOrWhiteSpace(x("Numero contrato").ToString))).CopyToDataTable]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:FilterDataTable DataTable="[vDtbConsolidado]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="376,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[vDtbConsolidado]" SelectColumnsMode="Keep">
+    <ui:FilterDataTable DataTable="[vDtbConsolidado]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="613,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[vDtbConsolidado]" SelectColumnsMode="Keep">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
           <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
@@ -130,7 +149,7 @@
         </scg:List>
       </ui:FilterDataTable.SelectColumns>
     </ui:FilterDataTable>
-    <ui:FilterDataTable DataTable="[vDtbConsolidado]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="376,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[vDtbConsolidado]" SelectColumnsMode="Keep">
+    <ui:FilterDataTable DataTable="[vDtbConsolidado]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="613,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[vDtbConsolidado]" SelectColumnsMode="Keep">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
           <ui:FilterOperationArgument BooleanOperator="And" Operator="NOTEQ">
@@ -162,8 +181,8 @@
         </scg:List>
       </ui:FilterDataTable.SelectColumns>
     </ui:FilterDataTable>
-    <ui:BuildDataTable DataTable="[vDataFinal]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="376,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Column1&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Column2&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column3&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column4&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column5&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column6&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column7&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column8&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column9&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column10&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column11&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column12&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column13&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column14&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column15&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column16&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column17&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column18&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column19&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column20&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column21&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column22&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column23&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column24&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column25&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column26&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column27&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[vDtbConsolidado]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:BuildDataTable DataTable="[vDataFinal]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="613,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Column1&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Column2&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column3&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column4&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column5&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column6&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column7&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column8&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column9&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column10&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column11&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column12&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column13&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column14&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column15&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column16&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column17&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column18&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column19&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column20&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column21&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column22&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column23&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column24&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column25&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column26&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column27&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Column28&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[vDtbConsolidado]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="613,51" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
@@ -189,8 +208,8 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{valores(&quot;Numero contrato&quot;),valores(&quot;Doc entry&quot;),valores(&quot;Seguro&quot;),&quot;T&quot;,valores(&quot;Parentesco&quot;),valores(&quot;Tipo de documento&quot;),valores(&quot;No. De Documento&quot;),valores(&quot;Primer Apellido&quot;),valores(&quot;Segundo Apellido&quot;),valores(&quot;Primer Nombre&quot;),valores(&quot;Segundo Nombre&quot;),valores(&quot;Fecha de Nacimiento&quot;),valores(&quot;Genero&quot;),valores(&quot;Fecha creacion&quot;),&quot;NR&quot;,&quot;0&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;,&quot;NULL&quot;,&quot;0&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;}]" DataTable="[vDataFinal]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
-                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{valores(&quot;Numero contrato&quot;),valores(&quot;Doc entry&quot;),valores(&quot;Seguro&quot;),&quot;B&quot;,&quot;L&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;100&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;,&quot;NULL&quot;,&quot;0&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;}]" DataTable="[vDataFinal]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{valores(&quot;Numero contrato&quot;),valores(&quot;Doc entry&quot;),valores(&quot;Seguro&quot;),&quot;T&quot;,valores(&quot;Parentesco&quot;),valores(&quot;Tipo de documento&quot;),valores(&quot;No. De Documento&quot;),valores(&quot;Primer Apellido&quot;),valores(&quot;Segundo Apellido&quot;),valores(&quot;Primer Nombre&quot;),valores(&quot;Segundo Nombre&quot;),valores(&quot;Fecha de Nacimiento&quot;),valores(&quot;Genero&quot;),valores(&quot;Fecha creacion&quot;),&quot;NR&quot;,&quot;0&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;,&quot;NULL&quot;,&quot;0&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;,&quot;;&quot;}]" DataTable="[vDataFinal]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{valores(&quot;Numero contrato&quot;),valores(&quot;Doc entry&quot;),valores(&quot;Seguro&quot;),&quot;B&quot;,&quot;L&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;100&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;,&quot;NULL&quot;,&quot;0&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;,&quot;;&quot;}]" DataTable="[vDataFinal]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
                 </Sequence>
               </If.Then>
             </If>
@@ -204,7 +223,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
-    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[vDtbConsolidado]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[vDtbConsolidado]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="613,51" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
@@ -230,8 +249,8 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{valores(&quot;Numero contrato&quot;),valores(&quot;Doc entry&quot;),valores(&quot;Asistencias&quot;),&quot;T&quot;,valores(&quot;Parentesco&quot;),valores(&quot;Tipo de documento&quot;),valores(&quot;No. De Documento&quot;),valores(&quot;Primer Apellido&quot;),valores(&quot;Segundo Apellido&quot;),valores(&quot;Primer Nombre&quot;),valores(&quot;Segundo Nombre&quot;),valores(&quot;Fecha de Nacimiento&quot;),valores(&quot;Genero&quot;),valores(&quot;Fecha creacion&quot;),&quot;NR&quot;,&quot;0&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;,&quot;NULL&quot;,&quot;0&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;}]" DataTable="[vDataFinal]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_7" />
-                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{valores(&quot;Numero contrato&quot;),valores(&quot;Doc entry&quot;),valores(&quot;Asistencias&quot;),&quot;B&quot;,&quot;L&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;100&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;,&quot;NULL&quot;,&quot;0&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;}]" DataTable="[vDataFinal]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_8" />
+                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{valores(&quot;Numero contrato&quot;),valores(&quot;Doc entry&quot;),valores(&quot;Asistencias&quot;),&quot;T&quot;,valores(&quot;Parentesco&quot;),valores(&quot;Tipo de documento&quot;),valores(&quot;No. De Documento&quot;),valores(&quot;Primer Apellido&quot;),valores(&quot;Segundo Apellido&quot;),valores(&quot;Primer Nombre&quot;),valores(&quot;Segundo Nombre&quot;),valores(&quot;Fecha de Nacimiento&quot;),valores(&quot;Genero&quot;),valores(&quot;Fecha creacion&quot;),&quot;NR&quot;,&quot;0&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;,&quot;NULL&quot;,&quot;0&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;,&quot;;&quot;}]" DataTable="[vDataFinal]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_7" />
+                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{valores(&quot;Numero contrato&quot;),valores(&quot;Doc entry&quot;),valores(&quot;Asistencias&quot;),&quot;B&quot;,&quot;L&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;100&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;,&quot;NULL&quot;,&quot;0&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;,&quot;;&quot;}]" DataTable="[vDataFinal]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_8" />
                 </Sequence>
               </If.Then>
             </If>
@@ -245,22 +264,22 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
-    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[vDtbConsolidado]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[vDtbConsolidado]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="613,51" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="valores" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,416" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_12">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[valores(&quot;Codigo Seguto&quot;).ToString = &quot;&quot;]" DisplayName="Validacion Seguro adicional" sap:VirtualizedContainerService.HintSize="484,324" sap2010:WorkflowViewState.IdRef="If_5">
+            <If Condition="[valores(&quot;Codigo Seguto&quot;).ToString = &quot;&quot;]" DisplayName="Validacion Seguro adicional" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_5">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
@@ -272,8 +291,8 @@
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{valores(&quot;Numero contrato&quot;),valores(&quot;Doc entry&quot;),valores(&quot;Codigo Seguto&quot;),&quot;T&quot;,valores(&quot;Parentesco&quot;),valores(&quot;Tipo de documento&quot;),valores(&quot;No. De Documento&quot;),valores(&quot;Primer Apellido&quot;),valores(&quot;Segundo Apellido&quot;),valores(&quot;Primer Nombre&quot;),valores(&quot;Segundo Nombre&quot;),valores(&quot;Fecha de Nacimiento&quot;),valores(&quot;Genero&quot;),valores(&quot;Fecha creacion&quot;),&quot;NR&quot;,&quot;0&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;,&quot;NULL&quot;,&quot;0&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;}]" DataTable="[vDataFinal]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_9" />
-                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{valores(&quot;Numero contrato&quot;),valores(&quot;Doc entry&quot;),valores(&quot;Codigo Seguto&quot;),&quot;B&quot;,&quot;L&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;100&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;,&quot;NULL&quot;,&quot;0&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;}]" DataTable="[vDataFinal]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_10" />
+                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{valores(&quot;Numero contrato&quot;),valores(&quot;Doc entry&quot;),valores(&quot;Codigo Seguto&quot;),&quot;T&quot;,valores(&quot;Parentesco&quot;),valores(&quot;Tipo de documento&quot;),valores(&quot;No. De Documento&quot;),valores(&quot;Primer Apellido&quot;),valores(&quot;Segundo Apellido&quot;),valores(&quot;Primer Nombre&quot;),valores(&quot;Segundo Nombre&quot;),valores(&quot;Fecha de Nacimiento&quot;),valores(&quot;Genero&quot;),valores(&quot;Fecha creacion&quot;),&quot;NR&quot;,&quot;0&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;,&quot;NULL&quot;,&quot;0&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;,&quot;;&quot;}]" DataTable="[vDataFinal]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_9" />
+                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{valores(&quot;Numero contrato&quot;),valores(&quot;Doc entry&quot;),valores(&quot;Codigo Seguto&quot;),&quot;B&quot;,&quot;L&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;100&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;,&quot;NULL&quot;,&quot;0&quot;,&quot;0&quot;,&quot;&quot;,&quot;&quot;,&quot;NULL&quot;,&quot;;&quot;}]" DataTable="[vDataFinal]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_10" />
                 </Sequence>
               </If.Else>
             </If>
@@ -287,28 +306,83 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
-    <ui:WriteRange AddHeaders="False" DataTable="[vDataFinal]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Hoja1" StartingCell="A1" WorkbookPath="[Path.Combine(in_RutaValidacionArchivo,&quot;Cabecera Seguros.xlsx&quot;)]">
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[vDataFinal]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="613,692" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="563,544" sap2010:WorkflowViewState.IdRef="Sequence_16">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If Condition="[row(&quot;Column14&quot;).ToString &lt;&gt; &quot;&quot;]" sap:VirtualizedContainerService.HintSize="521,452" sap2010:WorkflowViewState.IdRef="If_7">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,304" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke dateFormat2 workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Flujos\dateFormat2.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_fecha">[row("Column14").ToString]</InArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_fechaIngreso">[vFechaResultado]</OutArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_validarFecha">2</InArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:InvokeWorkflowFile>
+                  <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[row("Column14")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">[vFechaResultado]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </If.Then>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+    <ui:WriteRange AddHeaders="False" DataTable="[vDataFinal]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="613,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Hoja1" StartingCell="A1" WorkbookPath="[Path.Combine(in_RutaValidacionArchivo,&quot;Cabecera Seguros.xlsx&quot;)]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:WriteRange>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="376,51" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[Path.Combine(in_RutaValidacionArchivo,&quot;Cabecera Seguros.xlsx&quot;)]">
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="613,51" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[Path.Combine(in_RutaValidacionArchivo,&quot;Cabecera Seguros.xlsx&quot;)]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_14">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_14">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'excel.exe Socio'" sap:VirtualizedContainerService.HintSize="434,1037" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="8f1f4a564e98d8939e1af3e1ae893e30" Selector="&lt;wnd app='excel.exe' cls='XLMAIN' title='*' /&gt;">
+            <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'excel.exe Socio'" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="8f1f4a564e98d8939e1af3e1ae893e30" Selector="&lt;wnd app='excel.exe' cls='XLMAIN' title='*' /&gt;">
               <ui:WindowScope.Body>
                 <ActivityAction x:TypeArguments="x:Object">
                   <ActivityAction.Argument>
@@ -430,7 +504,7 @@
               </ui:WindowScope.Body>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
@@ -445,7 +519,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="376,478" sap2010:WorkflowViewState.IdRef="Sequence_15">
+    <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="613,678" sap2010:WorkflowViewState.IdRef="Sequence_15">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="vvalorini" />
       </Sequence.Variables>
@@ -464,6 +538,22 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:ReadCsvFile>
       <ui:OutputDataTable DataTable="[vInfoCabeceraCSV]" DisplayName="Tabla de datos de salida" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[StrSalidaExcel]" />
+      <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[StrSalidaExcel]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[StrSalidaExcel.Replace(Chr(34),"")]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[StrSalidaExcel]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[StrSalidaExcel.Replace(";NULL;;",";NULL;")]</InArgument>
+        </Assign.Value>
+      </Assign>
       <ui:WriteTextFile DisplayName="Escribir archivo de texto" FileName="[Path.Combine(in_RutaValidacionArchivo,&quot;Cabecera Seguros.txt&quot;)]" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[StrSalidaExcel]" />
     </Sequence>
   </Sequence>

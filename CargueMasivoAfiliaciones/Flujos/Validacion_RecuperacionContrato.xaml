@@ -2,11 +2,13 @@
   <x:Members>
     <x:Property Name="in_rutaConsolidada" Type="InArgument(x:String)" />
     <x:Property Name="in_RutaValidacionArchivo" Type="InArgument(x:String)" />
+    <x:Property Name="in_HmpConfig" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_ValoresCorrectos" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>947,2353</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>947,2605</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Validacion_RecuperacionContrato_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="52">
@@ -63,7 +65,6 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
@@ -71,9 +72,10 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Validacion_RecuperacionContrato" sap:VirtualizedContainerService.HintSize="957,2248" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Validacion_RecuperacionContrato" sap:VirtualizedContainerService.HintSize="957,2500" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="vDtbInfoConsolidado" />
     </Sequence.Variables>
@@ -83,6 +85,14 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:ReadRange AddHeaders="True" DataTable="[vDtbInfoConsolidado]" DisplayName="Lectura Base consolidado" sap:VirtualizedContainerService.HintSize="915,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" PreserveFormat="True" Range="A1" SheetName="Base consolidado" WorkbookPath="[in_rutaConsolidada]" />
+    <Assign sap:VirtualizedContainerService.HintSize="915,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="sd:DataTable">[vDtbInfoConsolidado]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="sd:DataTable">[vDtbInfoConsolidado.Select("[No. De Documento] in ("+in_ValoresCorrectos+")").CopyToDataTable]</InArgument>
+      </Assign.Value>
+    </Assign>
     <ui:FilterDataTable DataTable="[vDtbInfoConsolidado]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="915,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[vDtbInfoConsolidado]" SelectColumnsMode="Keep">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
@@ -102,7 +112,7 @@
         </scg:List>
       </ui:FilterDataTable.SelectColumns>
     </ui:FilterDataTable>
-    <If Condition="[vDtbInfoConsolidado is Nothing or vDtbInfoConsolidado.Rows.Count = 0]" sap:VirtualizedContainerService.HintSize="915,1930" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[vDtbInfoConsolidado is Nothing or vDtbInfoConsolidado.Rows.Count = 0]" sap:VirtualizedContainerService.HintSize="915,2082" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -113,7 +123,7 @@
         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;No se registra información con la descripcion 'Se activa el contrato' en la columna ACCION&quot;]" />
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="536,1782" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence sap:VirtualizedContainerService.HintSize="536,1934" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -151,19 +161,19 @@
               </sap:WorkflowViewStateService.ViewState>
             </ui:ForEachRow>
           </Sequence>
-          <Sequence DisplayName="Cargue a SAP" sap:VirtualizedContainerService.HintSize="494,1445" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Cargue a SAP" sap:VirtualizedContainerService.HintSize="494,1597" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'sap business'" sap:VirtualizedContainerService.HintSize="452,1353" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="e3b6e2621701a287e973bd3ff595f9a4" Selector="&lt;wnd app='sap business one.exe' cls='TMFrameClass' title='*' /&gt;">
+            <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'sap business'" sap:VirtualizedContainerService.HintSize="452,1505" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="e3b6e2621701a287e973bd3ff595f9a4" Selector="&lt;wnd app='sap business one.exe' cls='TMFrameClass' title='*' /&gt;">
               <ui:WindowScope.Body>
                 <ActivityAction x:TypeArguments="x:Object">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="418,1207" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="418,1359" sap2010:WorkflowViewState.IdRef="Sequence_4">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -251,7 +261,7 @@
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:Click>
                     </Sequence>
-                    <Sequence DisplayName="Buscar cargue masivos" sap:VirtualizedContainerService.HintSize="376,1009" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <Sequence DisplayName="Buscar cargue masivos" sap:VirtualizedContainerService.HintSize="376,1161" sap2010:WorkflowViewState.IdRef="Sequence_8">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -513,6 +523,15 @@
                           </ui:Target>
                         </ui:TypeInto.Target>
                       </ui:TypeInto>
+                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Outlook_EnviarCorreo workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="OUTLOOK\Outlook_EnviarCorreo.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="In_RutaAdjunto" />
+                          <InArgument x:TypeArguments="x:String" x:Key="In_CuerpoCorreo">Buenos dias,&lt;br&gt;&lt;br&gt;El presente correo es para notificar el correcto cargue de activaviones plataforma de SAP. &lt;br&gt;&lt;br&gt;Cordial saludos.</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_correoDestino">[in_HmpConfig("Correo").ToString]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_CorreoBot">[in_HmpConfig("EmailBot").ToString]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_Asunto">RB_Carga correcta activaciones en SAP</InArgument>
+                        </ui:InvokeWorkflowFile.Arguments>
+                      </ui:InvokeWorkflowFile>
                     </Sequence>
                   </Sequence>
                 </ActivityAction>

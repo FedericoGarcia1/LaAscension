@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1542,4139</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1465,6565</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ValidateInformeContratantesBeneficiarios_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -78,7 +78,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ValidateInformeContratantesBeneficiarios" sap:VirtualizedContainerService.HintSize="1475,5894" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ValidateInformeContratantesBeneficiarios" sap:VirtualizedContainerService.HintSize="1475,6500" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="vDtbInfoConsolidado" />
       <Variable x:TypeArguments="sd:DataTable" Name="vDtbValidacionInforme_" />
@@ -96,7 +96,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="1433,51" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[Path.Combine(in_RutaArchivoValidacion,&quot;Base consolidado.xlsm&quot;)]">
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="1433,260" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[Path.Combine(in_RutaArchivoValidacion,&quot;Base consolidado.xlsm&quot;)]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -120,7 +120,7 @@
       </ui:ExcelApplicationScope.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -131,7 +131,7 @@
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="396,490" sap2010:WorkflowViewState.IdRef="Sequence_92">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="396,450" sap2010:WorkflowViewState.IdRef="Sequence_92">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -823,7 +823,7 @@
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[vDtbMergeBeneficiarios]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="594,51" sap2010:WorkflowViewState.IdRef="ForEachRow_8">
+                      <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[vDtbMergeBeneficiarios]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="307,291" sap2010:WorkflowViewState.IdRef="ForEachRow_8">
                         <ui:ForEachRow.Body>
                           <ActivityAction x:TypeArguments="sd:DataRow">
                             <ActivityAction.Argument>
@@ -843,7 +843,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <If.Then>
-                                  <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[vDtbValidacionInforme_]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
+                                  <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[vDtbValidacionInforme_]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="307,291" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
                                     <ui:ForEachRow.Body>
                                       <ActivityAction x:TypeArguments="sd:DataRow">
                                         <ActivityAction.Argument>
@@ -855,7 +855,7 @@
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                          <If Condition="[row(&quot;CEDULA&quot;).ToString =vNumCedula and row(&quot;TIPO DE PLAN&quot;).ToString =Fila(&quot;Codigo Plan&quot;).ToString]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_8">
+                                          <If Condition="[row(&quot;CEDULA&quot;).ToString =vNumCedula and row(&quot;TIPO DE PLAN&quot;).ToString =Fila(&quot;Codigo Plan&quot;).ToString]" sap:VirtualizedContainerService.HintSize="484,362" sap2010:WorkflowViewState.IdRef="If_8">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -3050,7 +3050,7 @@
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
     <ui:WriteRange AddHeaders="False" DataTable="[vDtbValidacionInforme_]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="1433,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Hoja1" StartingCell="A2" WorkbookPath="[Path.Combine(in_RutaArchivoValidacion,&quot;Validación_Informe.xlsx&quot;)]" />
-    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[vDtbValidacionInforme_]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="1433,51" sap2010:WorkflowViewState.IdRef="ForEachRow_39">
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[vDtbValidacionInforme_]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="1433,448" sap2010:WorkflowViewState.IdRef="ForEachRow_39">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
@@ -3062,7 +3062,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[row(&quot;VALIDACION CARGUE SAP&quot;).ToString = &quot;Si&quot;]" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_49">
+            <If Condition="[row(&quot;VALIDACION CARGUE SAP&quot;).ToString = &quot;Si&quot; and row(&quot;VERIFICACIÓN BASE CONSOLIDADO&quot;).ToString &lt;&gt; &quot;No&quot;]" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_49">
               <If.Then>
                 <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_62">
                   <Assign.To>
@@ -3079,7 +3079,7 @@
       </ui:ForEachRow.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
