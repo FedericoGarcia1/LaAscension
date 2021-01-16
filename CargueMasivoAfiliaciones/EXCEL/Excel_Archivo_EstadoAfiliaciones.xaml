@@ -20,7 +20,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1021,4623</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1021,4663</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Excel_Archivo_EstadoAfiliaciones_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="60">
@@ -87,6 +87,7 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Excel_Archivo_EstadoAfiliaciones" sap:VirtualizedContainerService.HintSize="1031,4558" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -317,7 +318,7 @@
                 <OutArgument x:TypeArguments="x:String">[out_FechaCreacion]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[Dt_Filtrados.Rows(0).Item("Fecha Crea Contrato").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:String">[Dt_Filtrados.Rows(0).Item("CreateDate").ToString]</InArgument>
               </Assign.Value>
             </Assign>
           </Sequence>
