@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>720,4955</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1016,2405</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -84,9 +84,10 @@
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="665,4770" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="999,2220" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="vDtbInforme" />
       <Variable x:TypeArguments="x:Boolean" Name="vBooInformacionCorrecta" />
@@ -104,6 +105,7 @@
       <Variable x:TypeArguments="sd:DataTable" Name="vDataTableFinal" />
       <Variable x:TypeArguments="x:Boolean" Name="vBooCargueSAP" />
       <Variable x:TypeArguments="x:Int32" Name="vCounter" />
+      <Variable x:TypeArguments="x:Boolean" Name="vBooCargueSegurosSAP" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -111,7 +113,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="623,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;-------[Process] - Iniciando actualizacion de transaccion...&quot;]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="957,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;-------[Process] - Iniciando actualizacion de transaccion...&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -119,7 +121,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ActualizarTransactionData workflow" sap:VirtualizedContainerService.HintSize="623,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\ActualizarTransactionData.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ActualizarTransactionData workflow" sap:VirtualizedContainerService.HintSize="957,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\ActualizarTransactionData.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InOutArgument x:TypeArguments="sd:DataRow" x:Key="io_DtrTransactionItem">[io_DtrTransactionItem]</InOutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_AlfArchivoTrazabilidad">[in_AlfArchivoTrazabilidad]</InArgument>
@@ -128,7 +130,7 @@
         <OutArgument x:TypeArguments="x:Boolean" x:Key="out_BooReintenter">[out_BooReintenter]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="623,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;-------[Process] - Finalizo actualizacion de transaccion...&quot;]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="957,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;-------[Process] - Finalizo actualizacion de transaccion...&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -136,7 +138,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <Sequence DisplayName="Valifar log de auditoria" sap:VirtualizedContainerService.HintSize="623,66" sap2010:WorkflowViewState.IdRef="Sequence_32">
+    <Sequence DisplayName="Valifar log de auditoria" sap:VirtualizedContainerService.HintSize="957,66" sap2010:WorkflowViewState.IdRef="Sequence_32">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="vBooExitLog" />
       </Sequence.Variables>
@@ -199,7 +201,7 @@
         </If.Else>
       </If>
     </Sequence>
-    <Sequence DisplayName="Asignacion de variables" sap:VirtualizedContainerService.HintSize="623,66" sap2010:WorkflowViewState.IdRef="Sequence_41">
+    <Sequence DisplayName="Asignacion de variables" sap:VirtualizedContainerService.HintSize="957,66" sap2010:WorkflowViewState.IdRef="Sequence_41">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -428,44 +430,27 @@
         </ui:AppendLine>
       </Sequence>
     </Sequence>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="623,51" sap2010:WorkflowViewState.IdRef="CommentOut_5">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,158" sap2010:WorkflowViewState.IdRef="Sequence_75">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Descarga SAP" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_63">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SAP_Descarga workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="SAP\SAP_Descarga.xaml">
-              <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_HmpConfig">[in_HmpConfig]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_PathLog">[vPathLog]</InArgument>
-              </ui:InvokeWorkflowFile.Arguments>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:InvokeWorkflowFile>
-          </Sequence>
-        </Sequence>
-      </ui:CommentOut.Body>
+    <Sequence DisplayName="Descarga SAP" sap:VirtualizedContainerService.HintSize="957,66" sap2010:WorkflowViewState.IdRef="Sequence_63">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-    </ui:CommentOut>
-    <Assign sap:VirtualizedContainerService.HintSize="623,60" sap2010:WorkflowViewState.IdRef="Assign_36">
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SAP_Descarga workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="SAP\SAP_Descarga.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_HmpConfig">[in_HmpConfig]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_PathLog">[vPathLog]</InArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:InvokeWorkflowFile>
+    </Sequence>
+    <Assign sap:VirtualizedContainerService.HintSize="957,60" sap2010:WorkflowViewState.IdRef="Assign_36">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[vCounter]</OutArgument>
       </Assign.To>
@@ -473,16 +458,16 @@
         <InArgument x:TypeArguments="x:Int32">0</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:RetryScope DisplayName="Retry Validacion información 1" sap:VirtualizedContainerService.HintSize="623,51" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="00:00:30">
+    <ui:RetryScope DisplayName="Retry Validacion información 1" sap:VirtualizedContainerService.HintSize="957,51" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="00:00:30">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
-          <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="498,1149" sap2010:WorkflowViewState.IdRef="Sequence_66">
+          <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="837,1149" sap2010:WorkflowViewState.IdRef="Sequence_66">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="456,1057" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="795,1478" sap2010:WorkflowViewState.IdRef="TryCatch_3">
               <TryCatch.Try>
                 <Sequence sap:VirtualizedContainerService.HintSize="418,830" sap2010:WorkflowViewState.IdRef="Sequence_65">
                   <sap:WorkflowViewStateService.ViewState>
@@ -614,7 +599,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:RetryScope>
-    <Assign sap:VirtualizedContainerService.HintSize="623,60" sap2010:WorkflowViewState.IdRef="Assign_38">
+    <Assign sap:VirtualizedContainerService.HintSize="957,60" sap2010:WorkflowViewState.IdRef="Assign_38">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[vCounter]</OutArgument>
       </Assign.To>
@@ -622,25 +607,25 @@
         <InArgument x:TypeArguments="x:Int32">0</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:RetryScope DisplayName="Retry ValidacionConsolidado" sap:VirtualizedContainerService.HintSize="623,51" sap2010:WorkflowViewState.IdRef="RetryScope_3" NumberOfRetries="3" RetryInterval="00:00:30">
+    <ui:RetryScope DisplayName="Retry ValidacionConsolidado" sap:VirtualizedContainerService.HintSize="957,51" sap2010:WorkflowViewState.IdRef="RetryScope_3" NumberOfRetries="3" RetryInterval="00:00:30">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
-          <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="480,460" sap2010:WorkflowViewState.IdRef="Sequence_71">
+          <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="500,946" sap2010:WorkflowViewState.IdRef="Sequence_71">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="795,293" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="458,854" sap2010:WorkflowViewState.IdRef="TryCatch_5">
               <TryCatch.Try>
-                <Sequence sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_67">
+                <Sequence sap:VirtualizedContainerService.HintSize="420,627" sap2010:WorkflowViewState.IdRef="Sequence_67">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_39">
+                  <Assign sap:VirtualizedContainerService.HintSize="378,60" sap2010:WorkflowViewState.IdRef="Assign_39">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Int32">[vCounter]</OutArgument>
                     </Assign.To>
@@ -648,10 +633,10 @@
                       <InArgument x:TypeArguments="x:Int32">[vCounter+1]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <Sequence DisplayName="Consolidado" sap:VirtualizedContainerService.HintSize="262,66" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                  <Sequence DisplayName="Consolidado" sap:VirtualizedContainerService.HintSize="378,435" sap2010:WorkflowViewState.IdRef="Sequence_30">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -688,7 +673,7 @@
                 </Sequence>
               </TryCatch.Try>
               <TryCatch.Catches>
-                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="424,21" sap2010:WorkflowViewState.IdRef="Catch`1_5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -740,7 +725,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:RetryScope>
-    <Assign sap:VirtualizedContainerService.HintSize="623,60" sap2010:WorkflowViewState.IdRef="Assign_40">
+    <Assign sap:VirtualizedContainerService.HintSize="957,60" sap2010:WorkflowViewState.IdRef="Assign_40">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[vCounter]</OutArgument>
       </Assign.To>
@@ -748,7 +733,7 @@
         <InArgument x:TypeArguments="x:Int32">0</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:RetryScope DisplayName="Retry Validacion información 2" sap:VirtualizedContainerService.HintSize="623,751" sap2010:WorkflowViewState.IdRef="RetryScope_4" NumberOfRetries="3" RetryInterval="00:00:30">
+    <ui:RetryScope DisplayName="Retry Validacion información 2" sap:VirtualizedContainerService.HintSize="957,751" sap2010:WorkflowViewState.IdRef="RetryScope_4" NumberOfRetries="3" RetryInterval="00:00:30">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
           <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="480,577" sap2010:WorkflowViewState.IdRef="Sequence_74">
@@ -871,16 +856,22 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:RetryScope>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="623,2616" sap2010:WorkflowViewState.IdRef="TryCatch_7">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="957,51" sap2010:WorkflowViewState.IdRef="TryCatch_7">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Validar si cumple" sap:VirtualizedContainerService.HintSize="585,2389" sap2010:WorkflowViewState.IdRef="Sequence_55">
+        <Sequence DisplayName="Validar si cumple" sap:VirtualizedContainerService.HintSize="919,2977" sap2010:WorkflowViewState.IdRef="Sequence_55">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="543,2297" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+          <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="877,2885" sap2010:WorkflowViewState.IdRef="TryCatch_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -888,14 +879,14 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <TryCatch.Try>
-              <Sequence sap:VirtualizedContainerService.HintSize="505,1687" sap2010:WorkflowViewState.IdRef="Sequence_59">
+              <Sequence sap:VirtualizedContainerService.HintSize="839,2658" sap2010:WorkflowViewState.IdRef="Sequence_59">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:ReadRange AddHeaders="False" DataTable="[vDtbDataFinalValidada]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="463,87" sap2010:WorkflowViewState.IdRef="ReadRange_2" Range="A2" SheetName="Base consolidado" WorkbookPath="[Path.Combine(VRutaArchivoValidacion,&quot;Base consolidado.xlsm&quot;)]" />
-                <Assign sap:VirtualizedContainerService.HintSize="463,60" sap2010:WorkflowViewState.IdRef="Assign_35">
+                <ui:ReadRange AddHeaders="False" DataTable="[vDtbDataFinalValidada]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="797,87" sap2010:WorkflowViewState.IdRef="ReadRange_2" Range="A2" SheetName="Base consolidado" WorkbookPath="[Path.Combine(VRutaArchivoValidacion,&quot;Base consolidado.xlsm&quot;)]" />
+                <Assign sap:VirtualizedContainerService.HintSize="797,60" sap2010:WorkflowViewState.IdRef="Assign_35">
                   <Assign.To>
                     <OutArgument x:TypeArguments="sd:DataTable">[vDtbInfoIF]</OutArgument>
                   </Assign.To>
@@ -903,17 +894,17 @@
                     <InArgument x:TypeArguments="sd:DataTable">[vDtbDataFinalValidada.Select("Column1 in ("+vValoresCorrectos+")").CopyToDataTable]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Sequence DisplayName="Plantillas y cargues a SAP" sap:VirtualizedContainerService.HintSize="463,1216" sap2010:WorkflowViewState.IdRef="Sequence_56">
+                <Sequence DisplayName="Plantillas y cargues a SAP" sap:VirtualizedContainerService.HintSize="797,2187" sap2010:WorkflowViewState.IdRef="Sequence_56">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="Cargue plantilla socios" sap:VirtualizedContainerService.HintSize="421,66" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                  <Sequence DisplayName="Cargue plantilla socios" sap:VirtualizedContainerService.HintSize="755,356" sap2010:WorkflowViewState.IdRef="Sequence_37">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -942,7 +933,7 @@
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:InvokeWorkflowFile>
                   </Sequence>
-                  <Sequence DisplayName="Cargue Plantilla Cabecera contratos" sap:VirtualizedContainerService.HintSize="421,660" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                  <Sequence DisplayName="Cargue Plantilla Cabecera contratos" sap:VirtualizedContainerService.HintSize="755,660" sap2010:WorkflowViewState.IdRef="Sequence_45">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -960,6 +951,7 @@
                         <InArgument x:TypeArguments="x:String" x:Key="in_RutaFilesSAP">[vRutaFilesSAP]</InArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="in_ValoresCorrectos">[vValoresCorrectos]</InArgument>
                         <OutArgument x:TypeArguments="x:String" x:Key="Out_ValidacionCorrecta">[vValoresCorrectos]</OutArgument>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_HmpConfig">[in_HmpConfig]</InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Cargue_Cabecera_Contratos_SAP workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="SAP\Cargue_Cabecera_Contratos_SAP.xaml">
@@ -982,7 +974,7 @@
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                   </Sequence>
-                  <Sequence DisplayName="Validacion &quot;Recuperar contrato&quot;" sap:VirtualizedContainerService.HintSize="421,66" sap2010:WorkflowViewState.IdRef="Sequence_53">
+                  <Sequence DisplayName="Validacion &quot;Recuperar contrato&quot;" sap:VirtualizedContainerService.HintSize="755,66" sap2010:WorkflowViewState.IdRef="Sequence_53">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1004,14 +996,14 @@
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:InvokeWorkflowFile>
                   </Sequence>
-                  <Sequence DisplayName="Cargue consolidado beneficiaros y Seguros" sap:VirtualizedContainerService.HintSize="421,66" sap2010:WorkflowViewState.IdRef="Sequence_54">
+                  <Sequence DisplayName="Cargue consolidado beneficiaros y Seguros" sap:VirtualizedContainerService.HintSize="755,747" sap2010:WorkflowViewState.IdRef="Sequence_54">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Flujos_CabeceraBeneficiarios workflow" sap:VirtualizedContainerService.HintSize="758,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="Flujos\Flujos_CabeceraBeneficiarios.xaml">
+                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Flujos_CabeceraBeneficiarios workflow" sap:VirtualizedContainerService.HintSize="713,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="Flujos\Flujos_CabeceraBeneficiarios.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <InArgument x:TypeArguments="x:String" x:Key="in_rutaConsolidada">[Path.Combine(VRutaArchivoValidacion,"Base consolidado.xlsm")]</InArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="In_RutafolderCabeceraBeneficiarios">[VRutaArchivoValidacion]</InArgument>
@@ -1019,32 +1011,32 @@
                         <InArgument x:TypeArguments="x:String" x:Key="in_FechaArchivo" />
                         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_HmpConfig">[in_HmpConfig]</InArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="in_FileCorreo">[vAlfRutaArchivoAdjunto]</InArgument>
-                        <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_CargarInfoSAP">[vBooCargueSAP]</OutArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="in_ValoresCorrectos">[vValoresCorrectos]</InArgument>
+                        <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_BooCargueBeneficiarios">[vBooCargueSAP]</OutArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
-                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Flujo_Seguros workflow" sap:VirtualizedContainerService.HintSize="758,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_34" UnSafe="False" WorkflowFileName="Flujos\Flujo_Seguros.xaml">
+                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Flujo_Seguros workflow" sap:VirtualizedContainerService.HintSize="713,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_34" UnSafe="False" WorkflowFileName="Flujos\Flujo_Seguros.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <InArgument x:TypeArguments="x:String" x:Key="in_RutaValidacionArchivo">[VRutaArchivoValidacion]</InArgument>
                         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_HmpConfig">[in_HmpConfig]</InArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="in_ValoresCorrectos">[vValoresCorrectos]</InArgument>
+                        <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_BooCargueSeguros">[vBooCargueSegurosSAP]</OutArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
-                    <If Condition="[vBooCargueSAP]" sap:VirtualizedContainerService.HintSize="758,260" sap2010:WorkflowViewState.IdRef="If_11">
+                    <If Condition="[vBooCargueSAP]" DisplayName="Validar si carga cabecera beneficiarios" sap:VirtualizedContainerService.HintSize="713,51" sap2010:WorkflowViewState.IdRef="If_11">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <If.Then>
-                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Cargue_Cabecera_Beneficiarios_SAP workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_32" UnSafe="False" WorkflowFileName="SAP\Cargue_Cabecera_Beneficiarios_y_Seguros_SAP.xaml">
+                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Cargue_Cabecera_Beneficiarios_SAP workflow" sap:VirtualizedContainerService.HintSize="351,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_32" UnSafe="False" WorkflowFileName="SAP\Cargue_Cabecera_Beneficiarios_SAP.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
                             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_HmpConfig">[in_HmpConfig]</InArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_RutaFileCabeceraBeneficiarios">[Path.Combine(VRutaArchivoValidacion,"Cabecera Beneficiarios.txt")]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_RutaErrorInfo">[Path.Combine(VRutaArchivoValidacion,"Error_CargueBeneficiarios.txt")]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_RutaFileSeguros">[Path.Combine(VRutaArchivoValidacion,"Cabecera Seguros.txt")]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_RutaErrorSeguros">[Path.Combine(VRutaArchivoValidacion,"Error_CargueSeguros.txt")]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_RutaErrorInfo">[Path.Combine(VRutaArchivoValidacion,"Log_CargueBeneficiarios.txt")]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_RutaValidacion">[VRutaArchivoValidacion]</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                       </If.Then>
@@ -1052,8 +1044,31 @@
                         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Se omite cargue de información cabeceras beneficiarios en SAP.&quot;]" />
                       </If.Else>
                     </If>
+                    <If Condition="[vBooCargueSegurosSAP]" DisplayName="Validar si Carga cabecera Seguros" sap:VirtualizedContainerService.HintSize="713,260" sap2010:WorkflowViewState.IdRef="If_16">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Cargue_Cabecera_Beneficiarios_SAP workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_40" UnSafe="False" WorkflowFileName="SAP\Cargue_Cabecera_Seguros_SAP.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_HmpConfig">[in_HmpConfig]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_RutaFileCabeceraBeneficiarios">[Path.Combine(VRutaArchivoValidacion,"Cabecera Beneficiarios.txt")]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_RutaErrorInfo">[Path.Combine(VRutaArchivoValidacion,"Error_CargueBeneficiarios.txt")]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_RutaFileSeguros">[Path.Combine(VRutaArchivoValidacion,"Cabecera Seguros.txt")]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_RutaErrorSeguros">[Path.Combine(VRutaArchivoValidacion,"Log_CargueSeguros.txt")]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_RutaValidacion">[VRutaArchivoValidacion]</InArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                        </ui:InvokeWorkflowFile>
+                      </If.Then>
+                      <If.Else>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Se omite cargue de información cabeceras seguros en SAP.&quot;]" />
+                      </If.Else>
+                    </If>
                   </Sequence>
-                  <ui:CloseApplication ContinueOnError="True" DisplayName="Close SAP BussionesOne" sap:VirtualizedContainerService.HintSize="421,106" sap2010:WorkflowViewState.IdRef="CloseApplication_1">
+                  <ui:CloseApplication ContinueOnError="True" DisplayName="Close SAP BussionesOne" sap:VirtualizedContainerService.HintSize="755,106" sap2010:WorkflowViewState.IdRef="CloseApplication_1">
                     <ui:CloseApplication.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="49410451-07e1-4ed7-82bf-98622ac4e0d2" InformativeScreenshot="28e057f198f787272e5382eb4410d0fc" Selector="&lt;wnd app='sap business one.exe' cls='TMFrameClass' title='SAP Business One*' /&gt;">
                         <ui:Target.TimeoutMS>
@@ -1066,7 +1081,7 @@
                     </ui:CloseApplication.Target>
                   </ui:CloseApplication>
                 </Sequence>
-                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ActualizarTransactionData workflow" sap:VirtualizedContainerService.HintSize="463,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_35" UnSafe="False" WorkflowFileName="Framework\ActualizarTransactionData.xaml">
+                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ActualizarTransactionData workflow" sap:VirtualizedContainerService.HintSize="797,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_35" UnSafe="False" WorkflowFileName="Framework\ActualizarTransactionData.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <InOutArgument x:TypeArguments="sd:DataRow" x:Key="io_DtrTransactionItem">[io_DtrTransactionItem]</InOutArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="in_AlfArchivoTrazabilidad">[in_AlfArchivoTrazabilidad]</InArgument>
@@ -1078,7 +1093,7 @@
               </Sequence>
             </TryCatch.Try>
             <TryCatch.Catches>
-              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,404" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>

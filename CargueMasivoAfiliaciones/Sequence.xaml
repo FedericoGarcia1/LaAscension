@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>929,2892</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1016,3720</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Sequence_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="37">
@@ -82,9 +82,10 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="755,2787" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="847,3575" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="vDtbInforme" />
       <Variable x:TypeArguments="sd:DataTable" Name="VdtTipodocumento" />
@@ -109,6 +110,9 @@
       <Variable x:TypeArguments="sd:DataRow" Name="vRegistroFinal" />
       <Variable x:TypeArguments="sd:DataTable" Name="vDatosValidacion" />
       <Variable x:TypeArguments="sd:DataTable" Name="vDtbConsolidadoCopy2" />
+      <Variable x:TypeArguments="x:String" Name="vALOR" />
+      <Variable x:TypeArguments="x:Int32" Name="VnumeroitemsCelular" />
+      <Variable x:TypeArguments="s:DateTime" Name="vFecha2" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -116,8 +120,68 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadRange AddHeaders="True" DataTable="[vDtbConsolidadoCopy2]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="713,87" sap2010:WorkflowViewState.IdRef="ReadRange_3" Range="A5" SheetName="Contratantes y Beneficiarios" WorkbookPath="C:\Users\RPA_Ascension\Desktop\Pruebas RPA 9.xlsx" />
-    <ui:FilterDataTable DataTable="[vDtbConsolidadoCopy2]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="713,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[vDtbConsolidadoCopy2]" SelectColumnsMode="Keep">
+    <ui:ReadRange AddHeaders="True" DataTable="[vDtbConsolidadoCopy2]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="805,87" sap2010:WorkflowViewState.IdRef="ReadRange_3" PreserveFormat="True" Range="A1" SheetName="Base consolidado" WorkbookPath="C:\Users\RPA_Ascension\Documents\Proyectos\Acension\Ejecucion\2021\1\20\Adjuntos\5\Base consolidado.xlsm" />
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[vDtbConsolidadoCopy2]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="805,748" sap2010:WorkflowViewState.IdRef="ForEachRow_8">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Fila" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="755,600" sap2010:WorkflowViewState.IdRef="Sequence_31">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="713,60" sap2010:WorkflowViewState.IdRef="Assign_38">
+              <Assign.To>
+                <OutArgument x:TypeArguments="s:DateTime">[vFecha]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(Fila("FEHA DE CREAION").ToString,"dd/MM/yyyy",System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="713,60" sap2010:WorkflowViewState.IdRef="Assign_39">
+              <Assign.To>
+                <OutArgument x:TypeArguments="s:DateTime">[vFecha2]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(now.AddYears(-1).ToString("dd/MM/yyyy").ToString,"dd/MM/yyyy",System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="713,60" sap2010:WorkflowViewState.IdRef="Assign_37">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[vcounter]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[(vFecha-vFecha2).Days]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <If Condition="[vFecha2 &lt;= vFecha and vFecha &lt;= Now.Date]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="713,208" sap2010:WorkflowViewState.IdRef="If_12">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Recuperado&quot;]" />
+              </If.Then>
+              <If.Else>
+                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Nuevo&quot;]" />
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+    <ui:FilterDataTable DataTable="[vDtbConsolidadoCopy2]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="805,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[vDtbConsolidadoCopy2]" SelectColumnsMode="Keep">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
           <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
@@ -143,8 +207,8 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:FilterDataTable>
-    <ui:ReadRange AddHeaders="True" DataTable="[vDatosValidacion]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="713,87" sap2010:WorkflowViewState.IdRef="ReadRange_4" Range="A1" SheetName="Hoja1" WorkbookPath="C:\Users\RPA_Ascension\Documents\Proyectos\Acension\Ejecucion\2021\1\15\Adjuntos\1\Validación_Informe.xlsx" />
-    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[vDatosValidacion]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="713,51" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
+    <ui:ReadRange AddHeaders="True" DataTable="[vDatosValidacion]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="805,87" sap2010:WorkflowViewState.IdRef="ReadRange_4" Range="A1" SheetName="Hoja1" WorkbookPath="C:\Users\RPA_Ascension\Documents\Proyectos\Acension\Ejecucion\2021\1\15\Adjuntos\1\Validación_Informe.xlsx" />
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[vDatosValidacion]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="805,51" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
