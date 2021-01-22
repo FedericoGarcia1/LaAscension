@@ -3,11 +3,12 @@
     <x:Property Name="outDt" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="dt1" Type="InArgument(sd:DataTable)" />
     <x:Property Name="out_Valores" Type="OutArgument(x:String)" />
+    <x:Property Name="in_PathLog" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>747,1223</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>847,1355</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -80,7 +81,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="646,1118" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap:VirtualizedContainerService.HintSize="646,1290" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="PeopleOccurences" />
       <Variable x:TypeArguments="ui:GenericValue" Name="num" />
@@ -90,7 +91,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="604,1026" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="604,1198" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="scg:IEnumerable(x:Object)" Name="peopleStat" />
       </Sequence.Variables>
@@ -111,6 +112,14 @@ Select(Function(g) String.Format("{0} - {1} Repetidos", g.Key, g.Count())).ToArr
         </Assign.Value>
       </Assign>
       <ui:LogMessage DisplayName="Log message" sap:VirtualizedContainerService.HintSize="562,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[string.Join(Environment.NewLine, peopleOccurences)]" />
+      <ui:AppendLine DisplayName="Log Auditoria" FileName="[in_PathLog]" sap:VirtualizedContainerService.HintSize="562,132" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="[datetime.Now.ToString+&quot; &quot;+&quot; |  Informativo  |&quot;+&quot;Se identifica el correo: &quot;+string.Join(Environment.NewLine, peopleOccurences)]" UseDefaultEncoding="False">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:AppendLine>
       <Assign sap:VirtualizedContainerService.HintSize="562,64" sap2010:WorkflowViewState.IdRef="Assign_2">
         <Assign.To>
           <OutArgument x:TypeArguments="scg:IEnumerable(x:Object)">[peopleStat]</OutArgument>
