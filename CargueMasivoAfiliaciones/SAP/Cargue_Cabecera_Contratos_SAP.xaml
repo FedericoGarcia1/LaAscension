@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>953,5916</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>778,5912</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Cargue_Cabecera_Contratos_SAP_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -76,7 +76,7 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Cargue_Cabecera_Contratos_SAP" sap:VirtualizedContainerService.HintSize="639,5811" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Cargue_Cabecera_Contratos_SAP" sap:VirtualizedContainerService.HintSize="639,5847" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -90,13 +90,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:AppendLine>
-    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'sap business'" sap:VirtualizedContainerService.HintSize="597,5628" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="54a3fbdfc72e6e2af89111b9d8161158" Selector="&lt;wnd app='sap business one.exe' cls='TMFrameClass' title='SAP Business One*' /&gt;">
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'sap business'" sap:VirtualizedContainerService.HintSize="597,5664" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="54a3fbdfc72e6e2af89111b9d8161158" Selector="&lt;wnd app='sap business one.exe' cls='TMFrameClass' title='SAP Business One*' /&gt;">
       <ui:WindowScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="563,5482" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="563,5518" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="vBooInfo" />
               <Variable x:TypeArguments="sd:DataTable" Name="vDtbInfoConteno" />
@@ -204,7 +204,7 @@
             </ui:Click>
             <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayMS="2000" DisplayName="Type Into 'DIV'" EmptyField="True" sap:VirtualizedContainerService.HintSize="521,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="Cargue Afiliaciones">
               <ui:TypeInto.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e3914637-fbf0-4f0c-a44a-cb7ad2883c0c" InformativeScreenshot="c95d63169bd0cfc7645280321cd9ffc1" Selector="&lt;wnd aaname='Workspace' cls='TMMDIClientClass' idx='1' /&gt;&lt;wnd cls='NCPMainFrame' /&gt;&lt;wnd cls='Chrome_WidgetWin_0' /&gt;&lt;ctrl name='Página de inicio' role='document' /&gt;&lt;ctrl idx='34' role='DIV' /&gt;">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e3914637-fbf0-4f0c-a44a-cb7ad2883c0c" InformativeScreenshot="c95d63169bd0cfc7645280321cd9ffc1" Selector="&lt;wnd aaname='Workspace' cls='TMMDIClientClass' idx='1' /&gt;&lt;wnd cls='NCPMainFrame' /&gt;&lt;wnd cls='Chrome_WidgetWin_0' /&gt;&lt;ctrl name='Página de inicio' role='document' /&gt;&lt;ctrl name='Menús de búsqueda' role='editable text' /&gt;">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
@@ -239,14 +239,14 @@
             <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="521,51" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="5" RetryInterval="00:00:10">
               <ui:RetryScope.ActivityBody>
                 <ActivityAction>
-                  <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="376,246" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="376,289" sap2010:WorkflowViewState.IdRef="Sequence_6">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image 'sap business'" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="ClickImage_1" KeyModifiers="None" MouseButton="BTN_LEFT">
-                      <ui:ClickImage.CursorPosition>
+                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'client EXE'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_21" KeyModifiers="None" MouseButton="BTN_LEFT">
+                      <ui:Click.CursorPosition>
                         <ui:CursorPosition Position="Center">
                           <ui:CursorPosition.OffsetX>
                             <InArgument x:TypeArguments="x:Int32" />
@@ -255,12 +255,12 @@
                             <InArgument x:TypeArguments="x:Int32" />
                           </ui:CursorPosition.OffsetY>
                         </ui:CursorPosition>
-                      </ui:ClickImage.CursorPosition>
-                      <ui:ClickImage.Image>
-                        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAADoAAAAXCAYAAABaiVzAAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJPSURBVFhH7ZTfS9tQFMfzJ/mcR8X9CRsDn/O4Z/+DvUzIw2QVqmtZdbZZrbUsdnOwl0KhaKfOtI6iuCdhaudD23Qm7Xf3nKW/0tZlsELW5QMHTu65gfu55yQS/hMC0WkjEB3H4dERNuNxPFta4qCc1vyOZ9FarYb19Q2EVsLY2/sIw/jCQXkoFMbG6000Gg1nt//wJNputxFeXUM8kcT1dVUImbi7szgov7qqis5qeBmJ8l4/4kn0oFhEJBoTkt9hWbaQcQoCyi3L4gsIr0bw+eTEqYyiAlWWIEm9kNWKU5ssnkRfxWIoFA5gmk0W298/xsLCEw7KaY1quVweCU1z3nKjQxkSE2uyKvQnjyfR58vLOD+/4G4Sc3OPsLj4lINygmpnZxe8dxQVVYak6M6Ti4oKWZYhc5cVod/feXoW6Ep3CiRJBt/X0Hvj8ST6IrQiRL92RefnH2Nm5gEH5URHlPaOgkTHjikduO+gA3up5rqgbt313n14EtXeJMWIHqLZ/MFjmssVMDv7kIPyzujm8wWkMxnnrUF+39HeCOtKp3NOUI2lemtdUY+j70nUMErQktu4ubmFbY/6Gdn8o0poWyifnjoVN/d8o64D06W474TkO2sDHf2boq1WC8mtFLLvPqBaveXO2naLg3K6AH33PVLptBDvu4Uhfsn2d4sPP3Rg19+ZNg18oxPqKFGv15HaTmMns4vip2NcXn7joDy985ZH1jRNZ7f/8CxKUGeNUgl6Nou1aJSD8lK5zDU/80ei/zKB6LQRiE4bgeh0AfwEeDTOhvLGwtYAAAAASUVORK5CYII=" />
-                      </ui:ClickImage.Image>
-                      <ui:ClickImage.Target>
-                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="59e924bf-9955-418b-8d5d-de704d4c238b">
+                      </ui:Click.CursorPosition>
+                      <ui:Click.Target>
+                        <ui:Target Element="{x:Null}" Id="dbf028f9-3e02-4ccf-8ed5-910b37f5dab7" InformativeScreenshot="26296ad3865625f31aaf23de0acf77c2" Selector="&lt;wnd aaname='Workspace' cls='TMMDIClientClass' idx='1' /&gt;&lt;wnd cls='TMMDIChildClass' idx='1' title='EXE CARGUE AFILIACIONES' /&gt;&lt;ctrl name='EXE CARGUE AFILIACIONES' role='client' /&gt;">
+                          <ui:Target.ClippingRegion>
+                            <ui:Region Rectangle="799, 59, 29, 17" />
+                          </ui:Target.ClippingRegion>
                           <ui:Target.TimeoutMS>
                             <InArgument x:TypeArguments="x:Int32" />
                           </ui:Target.TimeoutMS>
@@ -268,8 +268,56 @@
                             <InArgument x:TypeArguments="ui:WaitForReady" />
                           </ui:Target.WaitForReady>
                         </ui:Target>
-                      </ui:ClickImage.Target>
-                    </ui:ClickImage>
+                      </ui:Click.Target>
+                    </ui:Click>
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image 'sap business'" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ClickImage_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                            <ui:ClickImage.CursorPosition>
+                              <ui:CursorPosition Position="Center">
+                                <ui:CursorPosition.OffsetX>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetX>
+                                <ui:CursorPosition.OffsetY>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetY>
+                              </ui:CursorPosition>
+                            </ui:ClickImage.CursorPosition>
+                            <ui:ClickImage.Image>
+                              <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAACYAAAAYCAYAAACWTY9zAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADvSURBVEhL7ZRdDoMgDIB7rh6I8/Aws+0K82kx8SIzmQl3saOsU6nTyRITHvgSYvmTj4ICZUoRS6WIpVLEUslXbBgGCfMCHl0n4TccWQQCmApaJ33HAre6llDTklmI+Da0Xvd44FRVEsY4iwSmlZrCWUJEwpBF43XnmeW6pzVjlgGQwv4W89aB8+UqYQyLrR4bLzB7cTSW+9SGxn41bwu4N42EMb8zNh1paz6ZkcJ9QWJqG8V2XgV49r2Emo07phbgTeg9sOynLcrYXrHt38Vbbp6NsNhiAfX18qDojv2RMXlmRxFLpYilUsRSyVSM6AWEIYdH27+L8AAAAABJRU5ErkJggg==" />
+                            </ui:ClickImage.Image>
+                            <ui:ClickImage.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="59e924bf-9955-418b-8d5d-de704d4c238b">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:ClickImage.Target>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:ClickImage>
+                        </Sequence>
+                      </ui:CommentOut.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:CommentOut>
                   </Sequence>
                 </ActivityAction>
               </ui:RetryScope.ActivityBody>
@@ -283,8 +331,8 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:RetryScope>
-            <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image 'sap business'" sap:VirtualizedContainerService.HintSize="521,51" sap2010:WorkflowViewState.IdRef="ClickImage_2" KeyModifiers="None" MouseButton="BTN_LEFT">
-              <ui:ClickImage.CursorPosition>
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'client EXE'" sap:VirtualizedContainerService.HintSize="521,51" sap2010:WorkflowViewState.IdRef="Click_22" KeyModifiers="None" MouseButton="BTN_LEFT">
+              <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>
                     <InArgument x:TypeArguments="x:Int32" />
@@ -293,12 +341,12 @@
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:CursorPosition.OffsetY>
                 </ui:CursorPosition>
-              </ui:ClickImage.CursorPosition>
-              <ui:ClickImage.Image>
-                <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGMAAAAWCAYAAADU1CLnAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG1SURBVGhD7ZfRjcMgDECZi4GY5H7uoxLTZJN8ZRhqA6aEQCCESFT1k9JLKAWbZ7hWGGYaWMZEsIyJYBkTwTImgmVMBMuYCJYxESxjIrpk/P2/Ll11NqOlMGrxjz9Kt4x1XZuuJhmLMlJv/uF3uSWjhbad8SVA0YgHt+9jMoRwQxdlbNpIqeGA+rCo86Nq03LMYuCiQnyXhyrIGBXXIzIw0SdkjMLOozqqfPadQYtOkAiS0CXDJq2M8mMJ6gft9L8F+9Jc9H6u7cgC4yp4pb8eG4800n7etR/Gq8WVyAr5+PtabENk4BXfxwK6ZYSFwm9a0lgHPuncsYBt8ZeA9DlACwdgnzAMxhPJyR49lbhcG70Psn1+rbHdloH3JCEVgXTLiBZiUfuk44ojDm04ftoJ2FUoXtQniSc3B85/FhcSBEdtrbHdloGQkNzCF2Vg5QifjCV6riSdq9q0LV99n2p1REdVIiM3Ry0uh5tDw3FGPdtiGyQDKS16WQaAyUVVGuKtJu1+JIbP+r67qk92nSUZFwlVe9ipmTmqcTlsHJl5TmMDhskocSqD2dEt48rFtNElg3kCY94OO/wtg2gZrAAAAABJRU5ErkJggg==" />
-              </ui:ClickImage.Image>
-              <ui:ClickImage.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="94b215d6-dba9-4f60-9b95-b9e7ccf34ead">
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target Element="{x:Null}" Id="7a979c31-4f17-4b61-8d76-28c6e1b022c5" InformativeScreenshot="fe61047fb3e99a8bc3d16d84400efd8e" Selector="&lt;wnd aaname='Workspace' cls='TMMDIClientClass' idx='1' /&gt;&lt;wnd cls='TMMDIChildClass' idx='1' title='EXE CARGUE AFILIACIONES' /&gt;&lt;ctrl name='EXE CARGUE AFILIACIONES' role='client' /&gt;">
+                  <ui:Target.ClippingRegion>
+                    <ui:Region Rectangle="799, 12, 68, 18" />
+                  </ui:Target.ClippingRegion>
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
@@ -306,15 +354,63 @@
                     <InArgument x:TypeArguments="ui:WaitForReady" />
                   </ui:Target.WaitForReady>
                 </ui:Target>
-              </ui:ClickImage.Target>
+              </ui:Click.Target>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-            </ui:ClickImage>
-            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'client EXE'" sap:VirtualizedContainerService.HintSize="521,106" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT">
+            </ui:Click>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="521,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image 'sap business'" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ClickImage_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                    <ui:ClickImage.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:ClickImage.CursorPosition>
+                    <ui:ClickImage.Image>
+                      <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGMAAAAWCAYAAADU1CLnAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG1SURBVGhD7ZfRjcMgDECZi4GY5H7uoxLTZJN8ZRhqA6aEQCCESFT1k9JLKAWbZ7hWGGYaWMZEsIyJYBkTwTImgmVMBMuYCJYxESxjIrpk/P2/Ll11NqOlMGrxjz9Kt4x1XZuuJhmLMlJv/uF3uSWjhbad8SVA0YgHt+9jMoRwQxdlbNpIqeGA+rCo86Nq03LMYuCiQnyXhyrIGBXXIzIw0SdkjMLOozqqfPadQYtOkAiS0CXDJq2M8mMJ6gft9L8F+9Jc9H6u7cgC4yp4pb8eG4800n7etR/Gq8WVyAr5+PtabENk4BXfxwK6ZYSFwm9a0lgHPuncsYBt8ZeA9DlACwdgnzAMxhPJyR49lbhcG70Psn1+rbHdloH3JCEVgXTLiBZiUfuk44ojDm04ftoJ2FUoXtQniSc3B85/FhcSBEdtrbHdloGQkNzCF2Vg5QifjCV6riSdq9q0LV99n2p1REdVIiM3Ry0uh5tDw3FGPdtiGyQDKS16WQaAyUVVGuKtJu1+JIbP+r67qk92nSUZFwlVe9ipmTmqcTlsHJl5TmMDhskocSqD2dEt48rFtNElg3kCY94OO/wtg2gZrAAAAABJRU5ErkJggg==" />
+                    </ui:ClickImage.Image>
+                    <ui:ClickImage.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="94b215d6-dba9-4f60-9b95-b9e7ccf34ead">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:ClickImage.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ClickImage>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'client EXE'" sap:VirtualizedContainerService.HintSize="521,51" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>
@@ -338,6 +434,12 @@
                   </ui:Target.WaitForReady>
                 </ui:Target>
               </ui:Click.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </ui:Click>
             <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBefore="1000" DelayMS="2000" DisplayName="Type Into 'Edit'" EmptyField="True" sap:VirtualizedContainerService.HintSize="521,134" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[in_RutaFileCabeceraContratos+ &quot;[k(enter)]&quot;]">
               <ui:TypeInto.Target>

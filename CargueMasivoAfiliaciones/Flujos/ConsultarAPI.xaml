@@ -13,7 +13,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>941,2264</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>941,2230</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ConsultarAPI_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -43,6 +43,7 @@
       <x:String>System.Activities.DynamicUpdate</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
       <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -74,10 +75,10 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ConsultarAPI" sap:VirtualizedContainerService.HintSize="951,2159" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ConsultarAPI" sap:VirtualizedContainerService.HintSize="951,2165" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="StrTexto" />
     </Sequence.Variables>
@@ -86,13 +87,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Abrir navegador" sap:VirtualizedContainerService.HintSize="909,2067" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[in_API+InCedula]">
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Abrir navegador" sap:VirtualizedContainerService.HintSize="909,2073" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[in_API+InCedula]">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="875,1966" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="875,1972" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -114,7 +115,7 @@
                 <OutArgument x:TypeArguments="x:String">[StrTexto]</OutArgument>
               </ui:GetValue.Value>
             </ui:GetValue>
-            <If Condition="[StrTexto=&quot;false&quot;]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="833,1566" sap2010:WorkflowViewState.IdRef="If_4">
+            <If Condition="[StrTexto=&quot;false&quot;]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="833,1572" sap2010:WorkflowViewState.IdRef="If_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -132,7 +133,7 @@
                 </Assign>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="526,1419" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="526,1425" sap2010:WorkflowViewState.IdRef="Sequence_6">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="s:String[]" Name="Nombre" />
                   </Sequence.Variables>
@@ -315,7 +316,11 @@
                       </Sequence>
                     </If.Then>
                   </If>
-                  <ui:CloseWindow Selector="{x:Null}" TimeoutMS="{x:Null}" UseWindow="{x:Null}" DisplayName="Close Window 'chrome.exe  201.244.105...'" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="CloseWindow_1" InformativeScreenshot="b5c72b5796a45fdf56ac14fc602af007" WaitForReady="INTERACTIVE" />
+                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke KillAllProcesses workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\KillAllProcesses.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_ProcessName">chrome</InArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                  </ui:InvokeWorkflowFile>
                 </Sequence>
               </If.Else>
             </If>
